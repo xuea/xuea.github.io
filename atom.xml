@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>零壹空间</title>
-  <subtitle>零壹空间</subtitle>
+  <title>XueA</title>
+  <subtitle>XueA</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
@@ -9,7 +9,7 @@
   <id>https://xuea.github.io/</id>
   
   <author>
-    <name>薛 A</name>
+    <name>XueA</name>
     
   </author>
   
