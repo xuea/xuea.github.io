@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-08-06T14:31:21.527Z</updated>
+  <updated>2016-08-06T14:39:45.461Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="https://xuea.github.io/2016/08/06/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%B8%80/"/>
     <id>https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/</id>
     <published>2016-08-06T12:51:31.000Z</published>
-    <updated>2016-08-06T14:31:21.527Z</updated>
+    <updated>2016-08-06T14:39:45.461Z</updated>
     
     <content type="html"><![CDATA[<h2 id="mean简介"><a href="#mean简介" class="headerlink" title="mean简介"></a>mean简介</h2><p>mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。</p>
 <a id="more"></a>
