@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-07-19T16:22:03.650Z</updated>
+  <updated>2016-08-06T14:31:21.527Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -14,6 +14,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CentOS搭建meanjs环境(一)</title>
+    <link href="https://xuea.github.io/2016/08/06/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%B8%80/"/>
+    <id>https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/</id>
+    <published>2016-08-06T12:51:31.000Z</published>
+    <updated>2016-08-06T14:31:21.527Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="mean简介"><a href="#mean简介" class="headerlink" title="mean简介"></a>mean简介</h2><p>mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。</p>
+<a id="more"></a>
+<p>就跟LAMP、JAVAWEB一样，mean是一套完整的web开发解决方案，它潜力无限，有可能就是未来开发界的大趋势。对于公司来说：养一个全栈工程师，比养一个前端工程师+一个后端工程师相对成本会降低不少；对于个人来说：干的活的类型可能相对多一点，但省去一部分交流的麻烦，工作会更顺心。</p>
+<h2 id="mean四大组件简介"><a href="#mean四大组件简介" class="headerlink" title="mean四大组件简介"></a>mean四大组件简介</h2><ul>
+<li><p><a href="https://www.mongodb.com/" target="_blank" rel="external">mongoDB</a>：</p>
+<ol>
+<li>nosql，最流行的非关系型数据库之一</li>
+<li>类似JSON的结构, 属于文档型数据库</li>
+<li>数据库数据读取简单，速度快    </li>
+<li>扩展性好，可以用在规模庞大的运行环境中</li>
+<li>对于大数据量、高并发、弱事务的互联网应用，MongoDB则是一个如瑞士军刀般的利剑。</li>
+</ol>
+</li>
+<li><p><a href="http://www.expressjs.com.cn/" target="_blank" rel="external">express</a>：</p>
+<ol>
+<li>基于nodejs的轻量级web应用框架    </li>
+<li>封装了nodejs的http模块    </li>
+<li>简单易用</li>
+</ol>
+</li>
+<li><p><a href="http://www.apjs.net/" target="_blank" rel="external">angularjs</a>：</p>
+<ol>
+<li>前端mvvm框架，学会之后可以享受急速的开发快感（针对大部分是CURD业务的系统）</li>
+<li>双向绑定（1.5开始同时支持单向绑定）</li>
+<li>来自Google，稳定性和支持没问题</li>
+</ol>
+</li>
+<li><p><a href="http://nodejs.cn/" target="_blank" rel="external">nodejs</a>：</p>
+<ol>
+<li>服务器Javascript运行平台，基于Chrome V8引擎   </li>
+<li>I/O非阻塞，高并发尽管来吧</li>
+<li>事件驱动，异步编程    </li>
+<li>NPM包管理，造的好轮子大家一起用</li>
+</ol>
+</li>
+</ul>
+<h2 id="mean框架的优缺点"><a href="#mean框架的优缺点" class="headerlink" title="mean框架的优缺点"></a>mean框架的优缺点</h2><p><strong>优点：</strong></p>
+<ol>
+<li>一种语言(即Javascript)编写前后端逻辑，相同的语法和规范    </li>
+<li>扩展性好</li>
+<li>项目结构清晰，容易上手    </li>
+<li>社区活跃</li>
+<li>公司前后端开发交流无障碍，快速而便捷</li>
+</ol>
+<p><strong>缺点：</strong></p>
+<ol>
+<li>mongoDB的缺点：<ul>
+<li>不支持事务</li>
+<li>没有熟悉的join（在设计表的时候得考虑多一点了）</li>
+<li>相对mysql这样成熟的数据库来说，资料相对较少</li>
+</ul>
+</li>
+<li>nodejs缺点：<ul>
+<li>不适合大量运算型的任务，适合高并发任务</li>
+<li>新手编程会遇到的坑比较多</li>
+</ul>
+</li>
+</ol>
+<p><em>当然，每个框架各有千秋，扬长避短才是正事</em></p>
+<h2 id="目前两大mean实践方案："><a href="#目前两大mean实践方案：" class="headerlink" title="目前两大mean实践方案："></a>目前两大mean实践方案：</h2><p>MEAN.JS：<a href="https://github.com/meanjs/mean" target="_blank" rel="external">https://github.com/meanjs/mean</a></p>
+<p>MEAN.IO：<a href="https://github.com/linnovate/mean" target="_blank" rel="external">https://github.com/linnovate/mean</a></p>
+<blockquote>
+<p><strong>MEAN.IO VS MEAN.JS</strong></p>
+<ul>
+<li>出自同一个开发组之手，各种理念原因分道扬镳。</li>
+<li><strong>本质</strong>上是一样的：MongoDB+Express+AngularJS+Node.js</li>
+<li><strong>共同技术</strong>：jQuery, Bootstrap, swig, mongoose, passport, karma和mocha, nodemon, bower </li>
+<li><strong>项目新建的方式不同</strong>：MEAN.IO使用内置命令行工具mean；MEAN.JS使用Yeoman </li>
+<li><strong>模块组织方式不同</strong>：MEAN.IO使用了node包管理方式，MEAN.JS使用的是前端模块管理方式 </li>
+<li><strong>项目构建的方式不同</strong>：MEAN.IO使用gulp，MEAN.JS使用了grunt和gulp</li>
+<li><strong>文档</strong>：MEAN.js更开放，文档更完善一些</li>
+</ul>
+</blockquote>
+<p><em>最后，我选取的是MEAN.JS，萝卜青菜各有所爱。我只是更懒一点，哪个文档多我选哪个，哈哈。</em></p>
+<p><strong>介绍的差不多啦，接下来开始搭建：<a href="">连接地址</a></strong></p>
+<hr>
+<p>快速连接：</p>
+<p><a href="#">CentOS搭建meanjs环境(一)</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      初次尝试搭建meanjs，万里长征又一大步
+    
+    </summary>
+    
+      <category term="javascript" scheme="https://xuea.github.io/categories/javascript/"/>
+    
+    
+      <category term="Javascript" scheme="https://xuea.github.io/tags/Javascript/"/>
+    
+      <category term="NodeJS" scheme="https://xuea.github.io/tags/NodeJS/"/>
+    
+      <category term="MEANJS" scheme="https://xuea.github.io/tags/MEANJS/"/>
+    
+      <category term="CentOS" scheme="https://xuea.github.io/tags/CentOS/"/>
+    
+  </entry>
   
   <entry>
     <title>我的技术栈总结</title>
