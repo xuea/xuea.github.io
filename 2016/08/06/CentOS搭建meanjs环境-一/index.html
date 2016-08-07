@@ -11,7 +11,7 @@ m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
 })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
 ga('create', 'UA-81908631-1', 'auto');
-ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">XueA</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">归档</a></li><li class="nav-link"><a href="/categories/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">CentOS搭建meanjs环境(一)</h1><span class="post-time">2016年8月6日</span><div id="sidebar" class="post-sidebar"><h3 class="heading">Directory</h3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mean简介"><span class="toc-text">mean简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mean四大组件简介"><span class="toc-text">mean四大组件简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mean框架的优缺点"><span class="toc-text">mean框架的优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目前两大mean实践方案："><span class="toc-text">目前两大mean实践方案：</span></a></li></ol></div><div class="post-content"><h2 id="mean简介"><a href="#mean简介" class="headerlink" title="mean简介"></a>mean简介</h2><p>mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。</p>
+ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/." class="logo">XueA</a><ul class="nav"><li class="nav-link"><a href="/" target="_self">首页</a></li><li class="nav-link"><a href="/archives/" target="_self">归档</a></li><li class="nav-link"><a href="/categories/" target="_self">分类</a></li><li class="nav-link"><a href="/tags/" target="_self">标签</a></li><li class="nav-link"><a href="/about/" target="_self">关于</a></li></ul></header><section id="container"><article class="post"><h1 class="post-title">CentOS搭建meanjs环境(一)</h1><span class="post-time">2016年8月6日</span><div id="sidebar" class="post-sidebar"><h3 class="heading">Directory</h3><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#mean简介"><span class="toc-text">mean简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mean四大组件简介"><span class="toc-text">mean四大组件简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#mean框架的优缺点"><span class="toc-text">mean框架的优缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#目前两大mean实践方案"><span class="toc-text">目前两大mean实践方案</span></a></li></ol></div><div class="post-content"><h2 id="mean简介"><a href="#mean简介" class="headerlink" title="mean简介"></a>mean简介</h2><p>mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。</p>
 <a id="more"></a>
 <p>就跟LAMP、JAVAWEB一样，mean是一套完整的web开发解决方案，它潜力无限，有可能就是未来开发界的大趋势。对于公司来说：养一个全栈工程师，比养一个前端工程师+一个后端工程师相对成本会降低不少；对于个人来说：干的活的类型可能相对多一点，但省去一部分交流的麻烦，工作会更顺心。</p>
 <h2 id="mean四大组件简介"><a href="#mean四大组件简介" class="headerlink" title="mean四大组件简介"></a>mean四大组件简介</h2><ul>
@@ -57,7 +57,7 @@ ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/."
 </ol>
 <p><strong>缺点：</strong></p>
 <ol>
-<li>mongoDB的缺点：<ul>
+<li>mongoDB的<a href="https://docs.mongodb.com/manual/reference/limits/" target="_blank" rel="external">缺点</a>：<ul>
 <li>不支持事务</li>
 <li>没有熟悉的join（在设计表的时候得考虑多一点了）</li>
 <li>相对mysql这样成熟的数据库来说，资料相对较少</li>
@@ -70,7 +70,7 @@ ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/."
 </li>
 </ol>
 <p><em>当然，每个框架各有千秋，扬长避短才是正事</em></p>
-<h2 id="目前两大mean实践方案："><a href="#目前两大mean实践方案：" class="headerlink" title="目前两大mean实践方案："></a>目前两大mean实践方案：</h2><p>MEAN.JS：<a href="https://github.com/meanjs/mean" target="_blank" rel="external">https://github.com/meanjs/mean</a></p>
+<h2 id="目前两大mean实践方案"><a href="#目前两大mean实践方案" class="headerlink" title="目前两大mean实践方案"></a>目前两大mean实践方案</h2><p>MEAN.JS：<a href="https://github.com/meanjs/mean" target="_blank" rel="external">https://github.com/meanjs/mean</a></p>
 <p>MEAN.IO：<a href="https://github.com/linnovate/mean" target="_blank" rel="external">https://github.com/linnovate/mean</a></p>
 <blockquote>
 <p><strong>MEAN.IO VS MEAN.JS</strong></p>
@@ -85,11 +85,11 @@ ga('send', 'pageview');</script></head><body><div id="main"><header><a href="/."
 </ul>
 </blockquote>
 <p><em>最后，我选取的是MEAN.JS，萝卜青菜各有所爱。我只是更懒一点，哪个文档多我选哪个，哈哈。</em></p>
-<p><strong>介绍的差不多啦，接下来开始搭建：<a href="">连接地址</a></strong></p>
+<p><strong>介绍的差不多啦，接下来开始搭建：<a href="../../07/CentOS搭建meanjs环境-二/">连接地址</a></strong></p>
 <hr>
 <p>快速连接：</p>
-<p><a href="#">CentOS搭建meanjs环境(一)</a></p>
-</div></article><div class="tags"><a href="/tags/Javascript/">Javascript</a><a href="/tags/NodeJS/">NodeJS</a><a href="/tags/MEANJS/">MEANJS</a><a href="/tags/CentOS/">CentOS</a></div><div class="paginator"><a href="/2016/07/19/我的技术栈/" class="next"><span>Next</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div data-thread-key="https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/index.html" data-title="CentOS搭建meanjs环境(一)" data-url="https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/index.html" class="ds-thread"></div><script type="text/javascript">var duoshuoQuery = {short_name: "x4596993" };
+<p><a href="#">CentOS搭建meanjs环境(一)</a><br><a href="../../07/CentOS搭建meanjs环境-二/">CentOS搭建meanjs环境(二)</a></p>
+</div></article><div class="tags"><a href="/tags/Javascript/">Javascript</a><a href="/tags/NodeJS/">NodeJS</a><a href="/tags/MEANJS/">MEANJS</a><a href="/tags/CentOS/">CentOS</a></div><div class="paginator"><a href="/2016/08/07/CentOS搭建meanjs环境-二/" class="prev"><i class="iconfont icon-left"></i><span> Prev</span></a><a href="/2016/07/19/我的技术栈/" class="next"><span>Next</span><i class="iconfont icon-right"></i></a></div><section id="comments"><div data-thread-key="https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/index.html" data-title="CentOS搭建meanjs环境(一)" data-url="https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/index.html" class="ds-thread"></div><script type="text/javascript">var duoshuoQuery = {short_name: "x4596993" };
 (function() {
     var ds = document.createElement('script');
     ds.type = 'text/javascript';ds.async = true;
