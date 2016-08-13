@@ -2,6 +2,20 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://xuea.github.io/categories/index.html</loc>
+    
+    <lastmod>2016-08-13T07:40:33.446Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://xuea.github.io/tags/index.html</loc>
+    
+    <lastmod>2016-08-13T07:40:23.151Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://xuea.github.io/2016/08/07/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%BA%8C/</loc>
     
     <lastmod>2016-08-13T07:26:28.442Z</lastmod>
@@ -12,20 +26,6 @@
     <loc>https://xuea.github.io/2016/08/06/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%B8%80/</loc>
     
     <lastmod>2016-08-13T06:55:41.132Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuea.github.io/tags/index.html</loc>
-    
-    <lastmod>2016-08-10T03:07:26.917Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://xuea.github.io/categories/index.html</loc>
-    
-    <lastmod>2016-08-10T03:07:07.241Z</lastmod>
     
   </url>
   
