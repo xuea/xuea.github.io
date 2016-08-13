@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-08-07T05:23:54.778Z</updated>
+  <updated>2016-08-13T06:32:18.549Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -16,13 +16,14 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>CentOS搭建meanjs环境(二)</title>
-    <link href="https://xuea.github.io/2016/08/07/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%BA%8C/"/>
-    <id>https://xuea.github.io/2016/08/07/CentOS搭建meanjs环境-二/</id>
-    <published>2016-08-07T01:39:50.000Z</published>
-    <updated>2016-08-07T05:23:54.778Z</updated>
+    <title>测试解析问题</title>
+    <link href="https://xuea.github.io/2016/08/13/%E6%B5%8B%E8%AF%95%E8%A7%A3%E6%9E%90%E9%97%AE%E9%A2%98/"/>
+    <id>https://xuea.github.io/2016/08/13/测试解析问题/</id>
+    <published>2016-08-13T06:09:09.000Z</published>
+    <updated>2016-08-13T06:32:18.549Z</updated>
     
-    <content type="html"><![CDATA[<p>在<a href="../../06/CentOS搭建meanjs环境-一">CentOS搭建meanjs环境(一)</a>中已经整体上介绍了mean这个技术栈的情况，接下来我们就开始实际搭建出来meanjs的环境：<br><a id="more"></a></p>
+    <content type="html"><![CDATA[<p>在<a href="../../06/CentOS搭建meanjs环境-一">CentOS搭建meanjs环境(一)</a>中已经整体上介绍了mean这个技术栈的情况，接下来我们就开始实际搭建出来meanjs的环境：</p>
+<a id="more"></a>
 <h2 id="0-说明"><a href="#0-说明" class="headerlink" title="0.说明"></a>0.说明</h2><p>本次搭建meanjs环境是以<a href="http://meanjs.org/" target="_blank" rel="external">meanjs官网</a>中的<a href="http://meanjs.org/docs.html" target="_blank" rel="external">文档</a>为主要路线，然后辅以相应的知识扩展，基本操作，问题解决处理。</p>
 <p>本人的搭建环境是 CentOS6 x86，几乎是个白板操作系统，所以遇到的问题可能是大家都会遇到的。</p>
 <h2 id="1-git"><a href="#1-git" class="headerlink" title="1.git"></a>1.git</h2><p>此处安装git主要用于克隆meanjs的源代码，大部分电脑可能有，那就跳过这一步。此处为CentOS系统的安装方法，其他操作系统请参考<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a></p>
@@ -81,7 +82,81 @@
     
     <summary type="html">
     
-      初次尝试搭建meanjs，万里长征又一大步
+      你对本页的描述
+    
+    </summary>
+    
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS搭建meanjs环境(二)</title>
+    <link href="https://xuea.github.io/2016/08/07/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%BA%8C/"/>
+    <id>https://xuea.github.io/2016/08/07/CentOS搭建meanjs环境-二/</id>
+    <published>2016-08-07T01:39:50.000Z</published>
+    <updated>2016-08-13T06:13:03.061Z</updated>
+    
+    <content type="html"><![CDATA[<p>在<a href="../../06/CentOS搭建meanjs环境-一">CentOS搭建meanjs环境(一)</a>中已经整体上介绍了mean这个技术栈的情况，接下来我们就开始实际搭建出来meanjs的环境：</p>
+<a id="more"></a>
+<h2 id="0-说明"><a href="#0-说明" class="headerlink" title="0.说明"></a>0.说明</h2><p>本次搭建meanjs环境是以<a href="http://meanjs.org/" target="_blank" rel="external">meanjs官网</a>中的<a href="http://meanjs.org/docs.html" target="_blank" rel="external">文档</a>为主要路线，然后辅以相应的知识扩展，基本操作，问题解决处理。</p>
+<p>本人的搭建环境是 CentOS6 x86，几乎是个白板操作系统，所以遇到的问题可能是大家都会遇到的。</p>
+<h2 id="1-git"><a href="#1-git" class="headerlink" title="1.git"></a>1.git</h2><p>此处安装git主要用于克隆meanjs的源代码，大部分电脑可能有，那就跳过这一步。此处为CentOS系统的安装方法，其他操作系统请参考<a href="https://git-scm.com/downloads" target="_blank" rel="external">https://git-scm.com/downloads</a></p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ git --version 	<span class="comment">#检测是否已经安装git</span></div><div class="line">$ yum update 		<span class="comment">#更新yum的软件库</span></div><div class="line">$ yum install git 	<span class="comment">#安装git</span></div></pre></td></tr></table></figure>
+<h2 id="2-nvm"><a href="#2-nvm" class="headerlink" title="2.nvm"></a>2.nvm</h2><p>鉴于nodejs社区非常活跃，版本更新迭代速度快的问题，我们可以采用 <a href="https://github.com/creationix/nvm" target="_blank" rel="external">nvm</a> 和 <a href="https://github.com/tj/n" target="_blank" rel="external">n</a> 来管理nodejs的版本，此处我采用nvm，因为n还需要首先得安装一个nodejs环境，这是个 鸡生蛋还是蛋生鸡 的问题，比较头大。</p>
+<p>可以用<strong>curl或者wget</strong>命令来安装nvm：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash</div><div class="line">wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.31.4/install.sh | bash</div></pre></td></tr></table></figure>
+<p>完成之后，出现“close your terminal and 。。。”，忘记记下来了，大致意思就是：关闭你的控制台再启动，你就可以使用nvm了。然后就关闭控制台，再开启一次，果然OK。（突然反应过来，此时输入   $ source ~/.bashrc 应该就可以，不用重启控制台啊）</p>
+<p>接下来，介绍nvm的常用命令：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ nvm --version		<span class="comment">#检查nvm的版本号，来检查是否安装成功</span></div><div class="line">$ nvm install 4.4.7	<span class="comment">#下载、安装并且编译版本为4.4.7的nodejs</span></div><div class="line">$ nvm install 6.3.1	<span class="comment">#下载、安装并且编译版本为6.3.1的nodejs</span></div><div class="line">$ nvm uninstall 4.4.7	<span class="comment">#卸载版本为4.4.7的nodejs</span></div><div class="line">$ nvm current		<span class="comment">#查看当前使用的nodejs版本</span></div><div class="line">$ nvm ls		<span class="comment">#显示所有nodejs版本</span></div><div class="line">$ nvm use 4.4.7		<span class="comment">#使用版本为4.4.7的nodejs</span></div></pre></td></tr></table></figure>
+<h2 id="3-node-amp-npm"><a href="#3-node-amp-npm" class="headerlink" title="3.node &amp; npm"></a>3.node &amp; npm</h2><p>经过nvm的安装之后，你应该已经选好了自己要用的node版本了(node会自带npm的安装)，用下面的命令来看看是否安装成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ node --version</div><div class="line">$ npm --version</div></pre></td></tr></table></figure>
+<p>npm主要是用来方便快捷的使用node第三方包的，项目中会经常使用，此处介绍npm的常用命令：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">$ npm install npm -g    		#更新npm</div><div class="line">$ npm install				#根据当前项目下的 package.json 文件下载对应的包</div><div class="line">$ npm install &lt;Module Name&gt; -g		#全局安装模块，Module Name方的是模块名，-g是全局安装</div><div class="line">$ npm install &lt;Module Name&gt;  --save-dev/--save</div><div class="line">##上一条命令的解释 start	</div><div class="line">#没有-g就是当前项目下安装某个模块。--save和--save-dev是自动将安装的内容配置到 package.json，省去了手动输入的麻烦。 </div><div class="line">#--save自动把模块和版本号添加到dependencies部分， --save-dve自动把模块和版本号添加到devdependencies部分。</div><div class="line">#至于配置文件区分这俩部分， 是用于区别产品依赖模块(dependencies)和开发依赖模块(devdependencies)， 以我见过的情况来看 devDepandencies主要是配置测试框架， 例如jshint、mocha</div><div class="line">##上一条命令的解释 end</div><div class="line">$ npm ls -g				#查看全局安装了哪些模块，不加-g就是当前项目安装了哪些模块</div><div class="line">$ npm ls &lt;Module Name&gt; -g		#查看全局安装的某个模块的情况，不加-g就不解释了</div><div class="line">$ npm uninstall &lt;Module Name&gt; -g	#全局卸载某一模块，不加-g就不解释了</div><div class="line">$ npm update &lt;Module Name&gt; -g 		#全局更新某一模块，不加-g就不解释了</div><div class="line">$ npm init        			#初始化模块，npm会根据当前项目下 package.json 文件来下载需要的模块，package.json里面配置了项目依赖的模块</div></pre></td></tr></table></figure>
+<p>接下来，我们来介绍几个常用的模块：</p>
+<ul>
+<li><p><a href="https://bower.io/" target="_blank" rel="external">bower</a>：网站是由框架、模块包、图片资源、音视频资源和工具等很多内容组成的，Bower来管理这些内容。它本来考虑的是全局管理所有资源，但是我们通常用它管理客户端的资源，比如jquery、bootstrap、前端图片等等。</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ npm install bower -g		<span class="comment">#全局安装bower</span></div><div class="line"><span class="comment">#下面是bower常用命令，可能需要--allow-root临时获取root权限，在命令后面加上 --allow-root 即可使用</span></div><div class="line">$ bower init 			<span class="comment">#进入项目目录下，会创建一个bower.json文件，里面保存了项目的配置信息</span></div><div class="line">$ bower install		 	<span class="comment">#根据当前项目目录下的bower.json文件安装所需要的包，</span></div><div class="line">$ bower install jquery --save 	<span class="comment">#自动安装最新的jquery，--save是将配置信息自动保存到bower.json文件中。jquery可替换成其他需要的文件</span></div><div class="line">$ bower info jquery		<span class="comment">#查看jquery的版本信息等。jquery可替换成其他需要的文件</span></div><div class="line">$ bower update			<span class="comment">#bower.json文件修改后，更新命令可以相应的下载所需的包	</span></div><div class="line">$ bower search bootstrap	<span class="comment">#可以查找所有包含bootstrap字符的包。bootstrap可替换成其他所需要查找的字符</span></div><div class="line">$ bower uninstall jquery	<span class="comment">#卸载jquery。jquery可替换成其他需要的文件</span></div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.gruntjs.net/" target="_blank" rel="external">grunt</a>：对于需要反复重复的任务，例如压缩（minification）、编译、单元测试、linting等，自动化工具可以减轻你的劳动，简化你的工作。当你在 Gruntfile 文件正确配置好了任务，任务运行器就会自动帮你或你的小组完成大部分无聊的工作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install grunt-cli -g		#全局安装grunt</div></pre></td></tr></table></figure>
+</li>
+<li><p><a href="http://www.gulpjs.com.cn/" target="_blank" rel="external">gulp</a>：功能上与上述的grunt是相互可替代的，相比而言，我认为gulp的api更加通俗易懂，容易使用。此处安装两个，是为了方便后续两个可以都试一试。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install gulp -g			#全局安装gulp</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="4-MongoDB"><a href="#4-MongoDB" class="headerlink" title="4.MongoDB"></a>4.MongoDB</h2><p><a href="http://www.mongodb.org/downloads" target="_blank" rel="external">各系统下载</a><br><a href="https://docs.mongodb.com/v3.0/tutorial/install-mongodb-on-red-hat/" target="_blank" rel="external">安装指导</a></p>
+<p>此处遇到坑，32位系统只能安装2.6版本，后续不支持32位系统了。此处说明：MongoDB不建议使用32位的操作系统，因为这样只能处理2GB大小的数据，而MongoDB是非常费空间的。</p>
+<p>64位contos安装：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ vim /etc/yum.repos.d/mongodb-org-3.0.repo</div><div class="line"><span class="comment">#输入下列文字  start</span></div><div class="line">[mongodb-org-3.0]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=https://repo.mongodb.org/yum/redhat/<span class="variable">$releasever</span>/mongodb-org/3.0/x86_64/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"><span class="comment">#输入下列文字  end</span></div><div class="line">$ sudo yum install -y mongodb-org</div></pre></td></tr></table></figure></p>
+<p>32位centos安装<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ vim /etc/yum.repos.d/mongodb-org-3.0.repo    <span class="comment">#文件名可能有点不对应了，无所谓，一个标识而已</span></div><div class="line"><span class="comment">#输入下列文字  start</span></div><div class="line">[mongodb]</div><div class="line">name=MongoDB Repository</div><div class="line">baseurl=http://downloads-distro.mongodb.org/repo/redhat/os/i686/</div><div class="line">gpgcheck=0</div><div class="line">enabled=1</div><div class="line"><span class="comment">#输入下列文字  end</span></div><div class="line">$ sudo yum install -y mongodb-org</div></pre></td></tr></table></figure></p>
+<p>此时，mongodb已经安装完成了，我们做一些小修改，然后启动服务：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ vim /etc/mongod.conf</div><div class="line"># 将文件中的  port=27017   前的#去掉，保存后退出</div><div class="line">$ service mongod start			#启动服务</div><div class="line">$ tail /var/log/mongodb/mongod.log 	#查看mongodb日志，发现[initandlisten] waiting for connections on port &lt;port&gt;，表示服务已经在27017端口启动监听，启动成功</div></pre></td></tr></table></figure></p>
+<p>推荐一个初步学习mongodb的网站：<a href="http://www.runoob.com/mongodb/mongodb-tutorial.html" target="_blank" rel="external">MongoDB 教程</a></p>
+<h2 id="5-克隆meanjs并运行"><a href="#5-克隆meanjs并运行" class="headerlink" title="5.克隆meanjs并运行"></a>5.克隆meanjs并运行</h2><h3 id="5-1下载meanjs到meanjs目录中"><a href="#5-1下载meanjs到meanjs目录中" class="headerlink" title="5.1下载meanjs到meanjs目录中"></a>5.1下载meanjs到meanjs目录中</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git clone https://github.com/meanjs/mean.git meanjs</div></pre></td></tr></table></figure>
+<p>或者用zip解压也可以<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ wget https://github.com/meanjs/mean/archive/master.zip -O meanjs.zip</div><div class="line">$ unzip meanjs.zip</div><div class="line">$ rm meanjs.zip</div></pre></td></tr></table></figure></p>
+<h3 id="5-2安装所需模块"><a href="#5-2安装所需模块" class="headerlink" title="5.2安装所需模块"></a>5.2安装所需模块</h3><p>进入meanjs目录下，安装所需的组件</p>
+<p>我在此处使用了 <a href="https://npm.taobao.org/" target="_blank" rel="external">cnpm</a>，即中国的npm来安装这些包，是由淘宝提供的，可信度还是不错的。cnpm的使用与npm的使用方法一致，只是将命令 npm  变为 cnpm 即可。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ npm install -g cnpm --registry=https://registry.npm.taobao.org		#全局安装cnpm</div><div class="line">$ cd meanjs</div><div class="line">$ cnpm install</div></pre></td></tr></table></figure></p>
+<h3 id="5-3安装前端内容"><a href="#5-3安装前端内容" class="headerlink" title="5.3安装前端内容"></a>5.3安装前端内容</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ bower install --allow-root</div></pre></td></tr></table></figure>
+<h3 id="5-4运行"><a href="#5-4运行" class="headerlink" title="5.4运行"></a>5.4运行</h3><p>使用 <strong>gulp或者grunt</strong> 来构建运行项目<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gulp</div><div class="line">#OR</div><div class="line">$ grunt</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>如出现报错：Error: Cannot find module ‘less’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install -g less --save-dev</div></pre></td></tr></table></figure>
+</li>
+<li><p>如出现报错：Error: ENOENT: no such file or directory, scandir ‘/usr/local/app/meanjs0.4.2/node_modules/.3.8.0@node-sass/vendor’</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cd node_modules</div><div class="line">$ npm rebuild node-sass</div><div class="line">$ cd ..</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>最后再试一次：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ gulp</div><div class="line">#OR</div><div class="line">$ grunt</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p>MEAN.JS - Development Environment<br>Environment:                    development<br>Port:                           3000<br>Database:                               mongodb://localhost/mean-dev<br>App version:                    0.4.2<br>MEAN.JS version:                        0.4.2</p>
+</blockquote>
+<p>出现类似上述文字即运行成功，打开 <a href="http://localhost:3000/" target="_blank" rel="external">http://localhost:3000/</a> 看看效果吧</p>
+<hr>
+<p>快速连接：</p>
+<p><a href="../../06/CentOS搭建meanjs环境-一">CentOS搭建meanjs环境(一)</a><br><a href="#">CentOS搭建meanjs环境(二)</a></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在&lt;a href=&quot;../../06/CentOS搭建meanjs环境-一&quot;&gt;CentOS搭建meanjs环境(一)&lt;/a&gt;中已经整体上介绍了mean这个技术栈的情况，接下来我们就开始实际搭建出来meanjs的环境：&lt;/p&gt;
     
     </summary>
     
@@ -103,7 +178,7 @@
     <link href="https://xuea.github.io/2016/08/06/CentOS%E6%90%AD%E5%BB%BAmeanjs%E7%8E%AF%E5%A2%83-%E4%B8%80/"/>
     <id>https://xuea.github.io/2016/08/06/CentOS搭建meanjs环境-一/</id>
     <published>2016-08-06T12:51:31.000Z</published>
-    <updated>2016-08-07T05:23:21.055Z</updated>
+    <updated>2016-08-13T06:55:41.132Z</updated>
     
     <content type="html"><![CDATA[<h2 id="mean简介"><a href="#mean简介" class="headerlink" title="mean简介"></a>mean简介</h2><p>mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。</p>
 <a id="more"></a>
@@ -187,7 +262,7 @@
     
     <summary type="html">
     
-      初次尝试搭建meanjs，万里长征又一大步
+      &lt;h2 id=&quot;mean简介&quot;&gt;&lt;a href=&quot;#mean简介&quot; class=&quot;headerlink&quot; title=&quot;mean简介&quot;&gt;&lt;/a&gt;mean简介&lt;/h2&gt;&lt;p&gt;mean是一个以Javascript为基础的web全栈开发解决方案，mongodb为数据库，express为服务端框架，angularjs作为客户端框架，nodejs作为服务器运行环境，mean刚好就是四大组件的首字母拼合而成。&lt;/p&gt;
     
     </summary>
     
