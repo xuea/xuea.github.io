@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-08-13T07:26:28.442Z</updated>
+  <updated>2016-08-19T02:52:55.242Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -14,6 +14,32 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件搜索神奇Everything的使用</title>
+    <link href="https://xuea.github.io/2016/08/19/%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E7%A5%9E%E5%A5%87Everything%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
+    <id>https://xuea.github.io/2016/08/19/文件搜索神奇Everything的使用/</id>
+    <published>2016-08-19T02:04:07.000Z</published>
+    <updated>2016-08-19T02:52:55.242Z</updated>
+    
+    <content type="html"><![CDATA[<p>Everything是windows下的文件搜索神器，它体积小、速度快、功能强大，深得大家的喜爱。我在此分享自己使用过程中的小技巧，相信大家看了会豁然开朗，工作效率又提升一大截。<br><a id="more"></a></p>
+<h2 id="下载-amp-安装"><a href="#下载-amp-安装" class="headerlink" title="下载&amp;安装"></a>下载&amp;安装</h2><p>下载多语言版本<br>安装：选择语言中文</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Everything是windows下的文件搜索神器，它体积小、速度快、功能强大，深得大家的喜爱。我在此分享自己使用过程中的小技巧，相信大家看了会豁然开朗，工作效率又提升一大截。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="工具" scheme="https://xuea.github.io/categories/%E5%B7%A5%E5%85%B7/"/>
+    
+    
+      <category term="工具" scheme="https://xuea.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+      <category term="技巧" scheme="https://xuea.github.io/tags/%E6%8A%80%E5%B7%A7/"/>
+    
+  </entry>
   
   <entry>
     <title>CentOS搭建meanjs环境(二)</title>
