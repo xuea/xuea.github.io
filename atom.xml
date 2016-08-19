@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-08-19T13:13:03.225Z</updated>
+  <updated>2016-08-19T13:14:54.617Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>文件搜索神奇Everything的使用</title>
+    <title>文件搜索神器Everything的使用</title>
     <link href="https://xuea.github.io/2016/08/19/%E6%96%87%E4%BB%B6%E6%90%9C%E7%B4%A2%E7%A5%9E%E5%A5%87Everything%E7%9A%84%E4%BD%BF%E7%94%A8/"/>
     <id>https://xuea.github.io/2016/08/19/文件搜索神奇Everything的使用/</id>
     <published>2016-08-19T02:04:07.000Z</published>
-    <updated>2016-08-19T13:13:03.225Z</updated>
+    <updated>2016-08-19T13:14:54.617Z</updated>
     
     <content type="html"><![CDATA[<p>Everything是windows下的文件搜索神器，它体积小、速度快、功能强大，相比于windows自带的文件查找工具，速度简直可以上天了，所以它深得大家的喜爱。我在此分享自己使用过程中的小技巧，相信大家看了会豁然开朗，工作效率又提升一大截。<br><a id="more"></a></p>
 <h2 id="下载-amp-安装"><a href="#下载-amp-安装" class="headerlink" title="下载&amp;安装"></a>下载&amp;安装</h2><p>选择好相应的版本，x86是32位操作系统用的，x64是64位操作系统用的，带有Multilingual字样的是多语言版本(包含中文):<br><a href="http://www.voidtools.com/downloads/" target="_blank" rel="external">下载地址</a></p>
