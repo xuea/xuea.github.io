@@ -1,0 +1,751 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="linux命令,总结," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="XueA" type="application/atom+xml" />
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux复习--命令总结">
+<meta property="og:url" content="https://xuea.github.io/2016/08/20/linux复习-命令总结/index.html">
+<meta property="og:site_name" content="XueA">
+<meta property="og:description" content="linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。">
+<meta property="og:image" content="http://img.stepbystep.top/blog/20160820/top.png">
+<meta property="og:updated_time" content="2016-08-21T07:06:34.254Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="linux复习--命令总结">
+<meta name="twitter:description" content="linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。">
+<meta name="twitter:image" content="http://img.stepbystep.top/blog/20160820/top.png">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Pisces',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 6314968671076746000,
+      author: '博主'
+    }
+  };
+</script>
+
+  <title> linux复习--命令总结 | XueA </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "//hm.baidu.com/hm.js?7b64e08d4704219a00ce11c34d8b6a76";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">XueA</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle">XueA`s Blog</p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            关于
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                linux复习--命令总结
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-08-20T10:13:55+08:00" content="2016-08-20">
+              2016-08-20
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/linux/" itemprop="url" rel="index">
+                    <span itemprop="name">linux</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/08/20/linux复习-命令总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/08/20/linux复习-命令总结/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。<br><a id="more"></a></p>
+<h2 id="linux引子"><a href="#linux引子" class="headerlink" title="linux引子"></a>linux引子</h2><p>Linux确切的是指一个操作系统中的内核，它源于Unix，linux操作系统是指采用linux内核的GNU操作系统。<br>在1991年，由芬兰赫尔辛基大学的学生Linus B. Torvolds首创。</p>
+<p>linux的发行版本，比较流行的有下列：Debian，红帽（redhat）、ubuntu、Suse、Open Suse、Mandriva（原Mandrake）、CentOS、fedora等，国内比较著名的有红旗linux。</p>
+<p>linux/unix基本思想与原则：</p>
+<ul>
+<li>一切皆文件：系统中的所有都归结为一个文件，包括命令、硬件和软件设备、操作系统、进程等等对于操作系统内核而言，都被视为拥有各自特性或类型的文件 </li>
+<li>K.I.S.S (Keep it Simple Stupid)：保持简单傻瓜化，简单，易学易用，足够强壮</li>
+</ul>
+<h2 id="基本操作"><a href="#基本操作" class="headerlink" title="基本操作"></a>基本操作</h2><h3 id="首先，如何寻求帮助？"><a href="#首先，如何寻求帮助？" class="headerlink" title="首先，如何寻求帮助？"></a>首先，如何寻求帮助？</h3><ul>
+<li>man：linux有句话，“有问题，找男人”，即找man命令，man其实是manual(操作说明)的简写。</li>
+<li>--help：是某个命令自带的简单有用的帮助文档，这个文档简单有用。</li>
+<li>info：是Linux下info格式的帮助指令，可以像浏览网页一样在各个节点中跳转，相比于man更容易查看。下面是进入info命令里面后会用到的快捷键：<blockquote>
+<p>?键：它就会显示info的常用快捷键。<br>N键：显示（相对于本节点的）下一节点的文档内容。<br>P键：显示（相对于本节点的）前一节点的文档内容。<br>U键：进入当前命令所在的主题。<br>M键：敲M键后输入命令的名称就可以查看该命令的帮助文档了。<br>G键：敲G键后输入主题名称，进入该主题。<br>L键：回到上一个访问的页面。<br>SPACE键：向前滚动一页。<br>BACKUP或DEL键：向后滚动一页。<br>Q：退出info。</p>
+</blockquote>
+</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ man ls	#查看ls命令的操作说明。进入里面按q是退出</div><div class="line">$ info ls	#查看ls命令的操作说明，info格式的。</div><div class="line">$ ls --help	#查看ls命令的简单操作说明</div></pre></td></tr></table></figure>
+<h3 id="退出当前命令"><a href="#退出当前命令" class="headerlink" title="退出当前命令"></a>退出当前命令</h3><p>常用：ctrl+c<br>进入某个命令后，可能用：q</p>
+<h3 id="tab补全"><a href="#tab补全" class="headerlink" title="tab补全"></a>tab补全</h3><p>这个可能是大家最喜欢的操作之一了</p>
+<ul>
+<li>未输入状态下连按两次 Tab 列出所有可用命令</li>
+<li>已输入部分命令名或文件名，按 Tab 进行自动补全</li>
+</ul>
+<h3 id="管道符-和重定向符-gt"><a href="#管道符-和重定向符-gt" class="headerlink" title="管道符 | 和重定向符 &gt;"></a>管道符 | 和重定向符 &gt;</h3><p>将上一个命令的输出作为下一个命令的输入<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ps -ef | grep mongod		<span class="comment">#ps -ef是查看当前运行的进程，grep是正则过滤。组合起来的意思是查看当前包含"mongod"字符的进程信息</span></div></pre></td></tr></table></figure></p>
+<h2 id="文件管理"><a href="#文件管理" class="headerlink" title="文件管理"></a>文件管理</h2><h3 id="ls-列出目录内容"><a href="#ls-列出目录内容" class="headerlink" title="ls:列出目录内容"></a>ls:列出目录内容</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ls</div><div class="line">$ ls <span class="_">-a</span>		<span class="comment">#显示当前目录下的所有内容，包括隐藏的文件内容，linux系统中以.开头的文件都是隐藏的文件或文件夹</span></div><div class="line">$ ls <span class="_">-l</span>		<span class="comment">#详细地显示每一个文件或文件夹内容</span></div><div class="line">$ ll		<span class="comment">#同 ls -l 功能一致，在某些操作系统可能不支持</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>详细说明一下“ls -l”命令的结果，假如命令返回如下内容：<br>drwx------ 2 Guest users 1024 Nov 21 21:05 Mail　　<br>-rwxr-xr-x 1 root bin 5013 Aug 15 9:32 uname*　　<br>每一列从左到右依次是：文件属性，连接数，拥有者，所在的group，文件大小，建档日期或者最后一次修改的时间，文件名<br>其中 文件属性 这一列共有十个字符：<br>第一个字符为文件类型信息：-指普通文件，d指目录文件，l指链接文件，b指块设备文件，c指字符设备文件，p指管道文件<br>第二到第十个字符中 每三个字符为一组，第一组表示文件所有者权限，第二组表示同组人权限，第三个表示他人权限。r、w、x分别代表可读，可写，可执行权限。</p>
+</blockquote>
+<h3 id="pwd：显示当前文件路径"><a href="#pwd：显示当前文件路径" class="headerlink" title="pwd：显示当前文件路径"></a>pwd：显示当前文件路径</h3><h3 id="basename：获取文件名"><a href="#basename：获取文件名" class="headerlink" title="basename：获取文件名"></a>basename：获取文件名</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ basename /etc/httpd/httpd.conf	<span class="comment">#返回httpd.conf</span></div></pre></td></tr></table></figure>
+<h3 id="dirname：获取路径名"><a href="#dirname：获取路径名" class="headerlink" title="dirname：获取路径名"></a>dirname：获取路径名</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ dirname /etc/httpd/httpd.conf		<span class="comment">#返回/etc/httpd</span></div></pre></td></tr></table></figure>
+<h3 id="cd：跳转系统路径"><a href="#cd：跳转系统路径" class="headerlink" title="cd：跳转系统路径"></a>cd：跳转系统路径</h3><p>基本用法就是： cd path<br>path 有绝对路径和相对路径之分，绝对路径强调从 / 起，一直到所在路径。相对路径则相对于当前路径来说，假设当前的目录有etc 文件夹（绝对路径应为 /home/username/etc），如果直接 cd etc 则进入此文件夹，但若是 cd /etc/ 则是进入系统 etc ，多琢磨一下就可以理解了。另外在 Linux 中， . 代表当前目录， .. 代表上级目录，因此返回上级目录可以 cd ..<br>注意配合tab补全使用，方便准确，注意区分大小写。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> /		<span class="comment">#进入根目录</span></div><div class="line">$ <span class="built_in">cd</span> usr	<span class="comment">#进入当前目录下的usr目录</span></div><div class="line">$ <span class="built_in">cd</span> ..		<span class="comment">#返回上级目录</span></div></pre></td></tr></table></figure></p>
+<h3 id="file：查看文件信息"><a href="#file：查看文件信息" class="headerlink" title="file：查看文件信息"></a>file：查看文件信息</h3><p>普通文件，压缩文件，连接文件都有不同的结果，可以都试试<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ file a.txt	<span class="comment">#查看文件的类型，编码等信息</span></div><div class="line">$ file -i a.txt	<span class="comment">#查看文件的mime类型</span></div></pre></td></tr></table></figure></p>
+<h3 id="cat：查看全部文件"><a href="#cat：查看全部文件" class="headerlink" title="cat：查看全部文件"></a>cat：查看全部文件</h3><p>如果文件比较大，使用就不方便<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cat catlina.out		<span class="comment">#查看catline.out文件内容</span></div><div class="line">$ cat -n catlina.out		<span class="comment">#查看catline.out文件内容，显示行号</span></div></pre></td></tr></table></figure></p>
+<h3 id="more：翻页查看文件"><a href="#more：翻页查看文件" class="headerlink" title="more：翻页查看文件"></a>more：翻页查看文件</h3><p>让画面在显示满一页时暂停，此时可按空格健继续显示下一个画面，或按Q键停止显示。</p>
+<h3 id="less：翻页查看文件"><a href="#less：翻页查看文件" class="headerlink" title="less：翻页查看文件"></a>less：翻页查看文件</h3><p>空格键：向下翻页<br>[pagedown]：向下翻页<br>[pageup]：向上翻页<br>/字符串：向下搜索字符串<br>?字符串：向上搜索字符串<br>n：重复前一个搜索，向上继续搜<br>N：重复前一个搜索，向下继续搜<br>q：退出less</p>
+<h3 id="head：查看文件的前面几行"><a href="#head：查看文件的前面几行" class="headerlink" title="head：查看文件的前面几行"></a>head：查看文件的前面几行</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ head catlina.out		<span class="comment">#默认查看catlina.out文件的前十行内容</span></div><div class="line">$ head -n 20 catlina.out	<span class="comment">#查看catlina.out文件的前二十行内容</span></div><div class="line">$ head -n -20 catlina.out	<span class="comment">#查看catlina.out文件除去最后二十行之前的内容</span></div></pre></td></tr></table></figure>
+<h3 id="tail：查看文件的尾部几行"><a href="#tail：查看文件的尾部几行" class="headerlink" title="tail：查看文件的尾部几行"></a>tail：查看文件的尾部几行</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">$ tail catlina.out		<span class="comment">#默认查看catlina.out文件的最后十行内容</span></div><div class="line">$ tail -n 20 catlina.out	<span class="comment">#查看catlina.out文件的最后二十行内容</span></div><div class="line">$ tail -n -20 catlina.out	<span class="comment">#查看catlina.out文件的最后二十行内容，没写错，和上面效果一样</span></div><div class="line">$ tail -n +20 catlina.out	<span class="comment">#查看catlina.out文件的二十行开始后的所有内容</span></div><div class="line">$ tail <span class="_">-f</span> catlina.out		<span class="comment">#可以实时查看catlina.out文件追加的内容，追踪实时日志会常用到</span></div><div class="line"><span class="comment">#来个复杂的：</span></div><div class="line">$ tail +4 catlina.out | head -n 39	<span class="comment">#查看catlina.out从第四行开始，共39行内容</span></div></pre></td></tr></table></figure>
+<h3 id="mkdir：创建文件夹"><a href="#mkdir：创建文件夹" class="headerlink" title="mkdir：创建文件夹"></a>mkdir：创建文件夹</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ mkdir a		<span class="comment">#创建1文件夹</span></div><div class="line">$ mkdir -p a/b/c	<span class="comment">#创建c文件夹，如果b，a文件夹不存在，会自动创建而不报错</span></div><div class="line">$ mkdir -m 777 a	<span class="comment">#创建一个权限为777的a文件夹，777是管理权限的值。</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>此处来详细解释一下权限值是怎么来的：<br>“ls -l” 命令中，第一列中除去第一个字母，剩下第二个到第十个字母就是本文件或者文件夹的权限标志了。<br>假如一个文件权限为”rwxrwxrwx”，表示 文件所有者 拥有可读、可写、可执行权限，同组人拥有可读、可写、可执行权限，其他人拥有 可读、可写、可执行权限。<br>r、w、x分别记为数字4，2，1，就像二进制一样。那么”rwxrwxrwx”权限就可以记为 777，这也是一个文件所提供的最高权限了。<br>假如你想赋予一个文件”rwxr-xr-x”的权限，那么权限值给出 755 即可。<br>假如你想赋予一个文件”rw-r–r–”的权限，那么权限值给出 644 即可。</p>
+</blockquote>
+<h3 id="touch：创建文件"><a href="#touch：创建文件" class="headerlink" title="touch：创建文件"></a>touch：创建文件</h3><p>另外可以重新设定文件的时间戳，感觉并不太常用<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ touch test.txt	<span class="comment">#创建一个test.txt文件</span></div><div class="line">$ touch -r log.log <span class="built_in">log</span>2012.log		<span class="comment">#更新log.log的时间和log2012.log时间戳相同</span></div><div class="line">$ touch -t 201211142234.50 log.log	<span class="comment">#设定log.log的时间戳</span></div></pre></td></tr></table></figure></p>
+<h3 id="rm：删除文件或文件夹"><a href="#rm：删除文件或文件夹" class="headerlink" title="rm：删除文件或文件夹"></a>rm：删除文件或文件夹</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ rm log.log	<span class="comment">#删除log.log文件，如果文件非空，会提示是否删除，按y则删除完成</span></div><div class="line">$ rm <span class="_">-f</span> log.log	<span class="comment">#强制删除log.log文件，系统不会提示</span></div><div class="line">$ rm -rf <span class="built_in">test</span>	<span class="comment">#强制递归删除test文件夹及文件夹下的内容，系统不会提示</span></div></pre></td></tr></table></figure>
+<h3 id="rmdir：删除空文件夹"><a href="#rmdir：删除空文件夹" class="headerlink" title="rmdir：删除空文件夹"></a>rmdir：删除空文件夹</h3><p>只能删除空目录，非空目录还得靠rm命令<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ rmdir <span class="built_in">test</span>			<span class="comment">#删除test目录，如果test下有内容，会提示无法删除</span></div><div class="line">$ rmdir -p <span class="built_in">test</span>1/<span class="built_in">test</span>2	<span class="comment">#删除test2目录，如果test1此时也成了空目录的话，test1也会被删除。命令等于 "rmdir test1/test2 test1"</span></div></pre></td></tr></table></figure></p>
+<h3 id="cp：复制"><a href="#cp：复制" class="headerlink" title="cp：复制"></a>cp：复制</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ cp file file2			<span class="comment">#将file复制到file2</span></div><div class="line">$ cp -u -v file file2	<span class="comment">#将file复制到file2，-u只有源文件相比目标文件有变动才复制，-v显示执行过程</span></div><div class="line">$ cp file1 dir1			<span class="comment">#将file1赋值到目录dir1下面</span></div><div class="line">$ cp file1 file2 file3 dir1	<span class="comment"># 将file1,file2,file3赋值到目录dir1下面</span></div><div class="line">$ cp -r dir1 dir2		<span class="comment">#将dir1目录及内容复制到dir2下面</span></div></pre></td></tr></table></figure>
+<h3 id="mv：移动，重命名"><a href="#mv：移动，重命名" class="headerlink" title="mv：移动，重命名"></a>mv：移动，重命名</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ mv <span class="built_in">source</span>  folder		<span class="comment">#将 source 移动到 folder 下，完成后则为 folder/source</span></div><div class="line">$ mv <span class="built_in">source</span> dest		<span class="comment">#在 dest 不为目录的前提下，重命名 source 为 dest</span></div></pre></td></tr></table></figure>
+<h3 id="grep：文本搜索"><a href="#grep：文本搜索" class="headerlink" title="grep：文本搜索"></a>grep：文本搜索</h3><p>该命令通常和其他命令联合使用，值得牢记<br>grep参数:</p>
+<blockquote>
+<p>-c：只输出匹配行的计数。<br>-I：不区分大 小写(只适用于单字符)。<br>-h：查询多文件时不显示文件名。<br>-l：查询多文件时只输出包含匹配字符的文件名。<br>-n：显示匹配行及 行号。<br>-s：不显示不存在或无匹配文本的错误信息。<br>-v：显示不包含匹配文本的所有行。</p>
+</blockquote>
+<p>正则表达式主要参数:</p>
+<blockquote>
+<p>\： 忽略正则表达式中特殊字符的原有含义。<br>^：匹配正则表达式的开始行。<br>$: 匹配正则表达式的结束行。<br>[ ]：单个字符，如[A]即A符合要求 。<br>[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>.：所有的单个字符<br>*：有字符，长度可以为0</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ grep <span class="string">'test'</span> log.log	<span class="comment">#显示log.log文件中包含test的行</span></div><div class="line">$ grep <span class="string">'test'</span> aa bb cc	<span class="comment">#显示aa、bb、cc文件中包含test的行</span></div><div class="line">$ grep <span class="string">'[a-z]\&#123;5\&#125;'</span> aa	<span class="comment">#显示aa文件中包含每个字符串有5个连续小写字符的字符串的行，&#123;&#125;要转义</span></div></pre></td></tr></table></figure>
+<h3 id="find：查文件"><a href="#find：查文件" class="headerlink" title="find：查文件"></a>find：查文件</h3><p>最常用，实际搜寻硬盘查询文件名称，实时精确，但稍微较慢<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</span></div><div class="line">$ find / -name <span class="string">"mongo"</span>		<span class="comment">#全盘查找文件名为mongo的文件</span></div><div class="line">$ find . -name <span class="string">"mongo"</span>		<span class="comment">#全盘当前目录下文件名为mongo的文件</span></div><div class="line">$ find / -name <span class="string">"mongo*"</span>		<span class="comment">#全盘查找包含文件名为mongo的文件</span></div><div class="line">$ find / -iname <span class="string">"mongo*"</span>		<span class="comment">#全盘查找包含文件名为mongo的文件，不区分大小写</span></div></pre></td></tr></table></figure></p>
+<h3 id="whereis：查文件"><a href="#whereis：查文件" class="headerlink" title="whereis：查文件"></a>whereis：查文件</h3><p>whereis命令只能用于搜索程序名，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis ls</div></pre></td></tr></table></figure></p>
+<h3 id="which：查文件"><a href="#which：查文件" class="headerlink" title="which：查文件"></a>which：查文件</h3><p>查看可执行文件的位置<br>which是通过 PATH环境变量 到该路径内查找可执行文件，所以基本的功能是寻找可执行文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span>	<span class="comment">#输出当前环境变量</span></div><div class="line">$ <span class="built_in">which</span> ls		<span class="comment">#输出ls命令的位置</span></div></pre></td></tr></table></figure></p>
+<h3 id="locate：查文件"><a href="#locate：查文件" class="headerlink" title="locate：查文件"></a>locate：查文件</h3><p>配合数据库查看文件位置，不是实时查找，数据库更新每天更新一次<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ updatedb				<span class="comment">#更新文件位置数据库</span></div><div class="line">$ locate passwd			<span class="comment">#查找文件名包含passwd文件o</span></div><div class="line">$ locate -n 10 passwd	<span class="comment">#查找文件名包含passwd文件，只显示前10个</span></div></pre></td></tr></table></figure></p>
+<h3 id="ln：创建链接"><a href="#ln：创建链接" class="headerlink" title="ln：创建链接"></a>ln：创建链接</h3><p>如同windows下的快捷方式一样，用到相同文件时，我们不需要复制一遍，只需要连接link一下即可。<br>软连接：1.软链接，以路径的形式存在；2.软链接可以 跨文件系统 ，硬链接不可以；3.软链接可以对一个不存在的文件名进行链接；4.软链接可以对目录进行链接<br>硬连接：1.硬链接，以文件副本的形式存在。但不占用实际空间；2.不允许给目录创建硬链接；3.硬链接只有在同一个文件系统中才能创建<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ln <span class="_">-s</span> <span class="built_in">log</span> link_<span class="built_in">log</span>		<span class="comment">#为log文件创建了一个link_log的软连接，常用</span></div><div class="line">$ ln <span class="built_in">log</span> link_<span class="built_in">log</span>		<span class="comment">#为log文件创建了一个link_log的硬连接</span></div></pre></td></tr></table></figure></p>
+<h3 id="nano：编辑文件"><a href="#nano：编辑文件" class="headerlink" title="nano：编辑文件"></a>nano：编辑文件</h3><p>使用方法：nano 文件名<br>如果你要保存所做的修改，按下Ctrl+O。想要退出，按下Ctrl+X。如果你退出前没有保存所做的修改，它会提示你是否要保存。如果不要，请按N，反之，则按Y。然后它会让你确认要保存的文件名，确认或修改后按Enter即可。</p>
+<h3 id="vi：编辑文件"><a href="#vi：编辑文件" class="headerlink" title="vi：编辑文件"></a>vi：编辑文件</h3><p>这个也是用来编辑文件的，是编辑神器vim的母体，使用较为麻烦，此处不说明。</p>
+<h2 id="系统管理"><a href="#系统管理" class="headerlink" title="系统管理"></a>系统管理</h2><h3 id="关机命令"><a href="#关机命令" class="headerlink" title="关机命令"></a>关机命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ halt</div><div class="line">$ poweroff</div><div class="line">$ shutdown -h now</div><div class="line">$ shutdown -h 10 	<span class="comment">#10分钟后关机，可以用shutdown -c 取消</span></div></pre></td></tr></table></figure>
+<h3 id="重启命令"><a href="#重启命令" class="headerlink" title="重启命令"></a>重启命令</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ reboot</div><div class="line">$ shutdown -r now</div><div class="line">$ shutdown -r 10		<span class="comment">#10分钟后重启</span></div><div class="line">$ shutdown -r 20:35	<span class="comment">#时间为20:35重启</span></div></pre></td></tr></table></figure>
+<h3 id="uname：系统信息"><a href="#uname：系统信息" class="headerlink" title="uname：系统信息"></a>uname：系统信息</h3><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ uname				<span class="comment">#内核名</span></div><div class="line">$ uname <span class="_">-a</span>			<span class="comment">#详细输出所有信息，依次为内核名称，主机名，内核版本号，内核版本，硬件名，处理器类型，硬件平台类型，操作系统名称</span></div></pre></td></tr></table></figure>
+<h3 id="top：任务管理器"><a href="#top：任务管理器" class="headerlink" title="top：任务管理器"></a>top：任务管理器</h3><p>输入 top 后：<br><img src="http://img.stepbystep.top/blog/20160820/top.png" alt="top命令截图"></p>
+<h3 id="free"><a href="#free" class="headerlink" title="free"></a>free</h3><h3 id="ps"><a href="#ps" class="headerlink" title="ps"></a>ps</h3><h3 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h3><h3 id="date"><a href="#date" class="headerlink" title="date"></a>date</h3><h3 id="cal"><a href="#cal" class="headerlink" title="cal"></a>cal</h3><h2 id="权限管理"><a href="#权限管理" class="headerlink" title="权限管理"></a>权限管理</h2><p>chown<br>chmod<br>useradd<br>passwd<br>umask<br>who<br>whoami</p>
+<h2 id="网络通讯"><a href="#网络通讯" class="headerlink" title="网络通讯"></a>网络通讯</h2><p>ping<br>route<br>wget<br>curl</p>
+<h2 id="设备管理"><a href="#设备管理" class="headerlink" title="设备管理"></a>设备管理</h2><p>df            磁盘使用率<br>du            文件结构（单位kb）<br>mount<br>umount</p>
+<h2 id="备份压缩"><a href="#备份压缩" class="headerlink" title="备份压缩"></a>备份压缩</h2><p>tar<br>zip<br>unzip<br>gzip<br>bzip2</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/linux命令/" rel="tag">#linux命令</a>
+          
+            <a href="/tags/总结/" rel="tag">#总结</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/08/19/文件搜索神奇Everything的使用/" rel="next" title="文件搜索神器Everything的使用">
+                <i class="fa fa-chevron-left"></i> 文件搜索神器Everything的使用
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/08/20/linux复习-命令总结/"
+           data-title="linux复习--命令总结" data-url="https://xuea.github.io/2016/08/20/linux复习-命令总结/">
+      </div>
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.jpg"
+               alt="XueA" />
+          <p class="site-author-name" itemprop="name">XueA</p>
+          <p class="site-description motion-element" itemprop="description">千里之行 始于足下</p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-name">日志</span>
+            </a>
+          </div>
+
+          
+            <div class="site-state-item site-state-categories">
+              <a href="/categories">
+                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-name">分类</span>
+              </a>
+            </div>
+          
+
+          
+            <div class="site-state-item site-state-tags">
+              <a href="/tags">
+                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
+          
+
+        </nav>
+
+        
+          <div class="feed-link motion-element">
+            <a href="/atom.xml" rel="alternate">
+              <i class="fa fa-rss"></i>
+              RSS
+            </a>
+          </div>
+        
+
+        <div class="links-of-author motion-element">
+          
+            
+              <span class="links-of-author-item">
+                <a href="https://github.com/xuea" target="_blank" title="GitHub">
+                  
+                    <i class="fa fa-fw fa-github"></i>
+                  
+                  GitHub
+                </a>
+              </span>
+            
+          
+        </div>
+
+        
+        
+
+        
+        
+          <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+            <div class="links-of-blogroll-title">
+              <i class="fa  fa-fw fa-globe"></i>
+              Links
+            </div>
+            <ul class="links-of-blogroll-list">
+              
+                <li class="links-of-blogroll-item">
+                  <a href="http://www.sunkejava.com" title="sunkejava" target="_blank">sunkejava</a>
+                </li>
+              
+            </ul>
+          </div>
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#linux引子"><span class="nav-number">1.</span> <span class="nav-text">linux引子</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#基本操作"><span class="nav-number">2.</span> <span class="nav-text">基本操作</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#首先，如何寻求帮助？"><span class="nav-number">2.1.</span> <span class="nav-text">首先，如何寻求帮助？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#退出当前命令"><span class="nav-number">2.2.</span> <span class="nav-text">退出当前命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tab补全"><span class="nav-number">2.3.</span> <span class="nav-text">tab补全</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#管道符-和重定向符-gt"><span class="nav-number">2.4.</span> <span class="nav-text">管道符 | 和重定向符 ></span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#文件管理"><span class="nav-number">3.</span> <span class="nav-text">文件管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ls-列出目录内容"><span class="nav-number">3.1.</span> <span class="nav-text">ls:列出目录内容</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#pwd：显示当前文件路径"><span class="nav-number">3.2.</span> <span class="nav-text">pwd：显示当前文件路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#basename：获取文件名"><span class="nav-number">3.3.</span> <span class="nav-text">basename：获取文件名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#dirname：获取路径名"><span class="nav-number">3.4.</span> <span class="nav-text">dirname：获取路径名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cd：跳转系统路径"><span class="nav-number">3.5.</span> <span class="nav-text">cd：跳转系统路径</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#file：查看文件信息"><span class="nav-number">3.6.</span> <span class="nav-text">file：查看文件信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cat：查看全部文件"><span class="nav-number">3.7.</span> <span class="nav-text">cat：查看全部文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#more：翻页查看文件"><span class="nav-number">3.8.</span> <span class="nav-text">more：翻页查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#less：翻页查看文件"><span class="nav-number">3.9.</span> <span class="nav-text">less：翻页查看文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#head：查看文件的前面几行"><span class="nav-number">3.10.</span> <span class="nav-text">head：查看文件的前面几行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#tail：查看文件的尾部几行"><span class="nav-number">3.11.</span> <span class="nav-text">tail：查看文件的尾部几行</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mkdir：创建文件夹"><span class="nav-number">3.12.</span> <span class="nav-text">mkdir：创建文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#touch：创建文件"><span class="nav-number">3.13.</span> <span class="nav-text">touch：创建文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rm：删除文件或文件夹"><span class="nav-number">3.14.</span> <span class="nav-text">rm：删除文件或文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#rmdir：删除空文件夹"><span class="nav-number">3.15.</span> <span class="nav-text">rmdir：删除空文件夹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cp：复制"><span class="nav-number">3.16.</span> <span class="nav-text">cp：复制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#mv：移动，重命名"><span class="nav-number">3.17.</span> <span class="nav-text">mv：移动，重命名</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#grep：文本搜索"><span class="nav-number">3.18.</span> <span class="nav-text">grep：文本搜索</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#find：查文件"><span class="nav-number">3.19.</span> <span class="nav-text">find：查文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#whereis：查文件"><span class="nav-number">3.20.</span> <span class="nav-text">whereis：查文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#which：查文件"><span class="nav-number">3.21.</span> <span class="nav-text">which：查文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#locate：查文件"><span class="nav-number">3.22.</span> <span class="nav-text">locate：查文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ln：创建链接"><span class="nav-number">3.23.</span> <span class="nav-text">ln：创建链接</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#nano：编辑文件"><span class="nav-number">3.24.</span> <span class="nav-text">nano：编辑文件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vi：编辑文件"><span class="nav-number">3.25.</span> <span class="nav-text">vi：编辑文件</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#系统管理"><span class="nav-number">4.</span> <span class="nav-text">系统管理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#关机命令"><span class="nav-number">4.1.</span> <span class="nav-text">关机命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#重启命令"><span class="nav-number">4.2.</span> <span class="nav-text">重启命令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#uname：系统信息"><span class="nav-number">4.3.</span> <span class="nav-text">uname：系统信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#top：任务管理器"><span class="nav-number">4.4.</span> <span class="nav-text">top：任务管理器</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#free"><span class="nav-number">4.5.</span> <span class="nav-text">free</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ps"><span class="nav-number">4.6.</span> <span class="nav-text">ps</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#kill"><span class="nav-number">4.7.</span> <span class="nav-text">kill</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#date"><span class="nav-number">4.8.</span> <span class="nav-text">date</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#cal"><span class="nav-number">4.9.</span> <span class="nav-text">cal</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#权限管理"><span class="nav-number">5.</span> <span class="nav-text">权限管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络通讯"><span class="nav-number">6.</span> <span class="nav-text">网络通讯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备管理"><span class="nav-number">7.</span> <span class="nav-text">设备管理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#备份压缩"><span class="nav-number">8.</span> <span class="nav-text">备份压缩</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">XueA</span>
+</div>
+
+<div class="powered-by">
+  由 <a class="theme-link" href="http://hexo.io">Hexo</a> 强力驱动
+</div>
+
+<div class="theme-info">
+  主题 -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Pisces
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.0.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+  
+    
+  
+
+  <script type="text/javascript">
+    var duoshuoQuery = {short_name:"xuea"};
+    (function() {
+      var ds = document.createElement('script');
+      ds.type = 'text/javascript';ds.async = true;
+      ds.id = 'duoshuo-script';
+      ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+      ds.charset = 'UTF-8';
+      (document.getElementsByTagName('head')[0]
+      || document.getElementsByTagName('body')[0]).appendChild(ds);
+    })();
+  </script>
+
+  
+    
+      
+      <script src="/vendors/ua-parser-js/dist/ua-parser.min.js?v=0.7.9"></script>
+      <script src="/js/src/hook-duoshuo.js"></script>
+    
+  
+
+
+
+
+
+  
+  
+  
+
+  
+
+  
+
+</body>
+</html>
