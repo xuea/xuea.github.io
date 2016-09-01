@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-08-21T07:19:42.742Z</updated>
+  <updated>2016-09-01T12:57:08.757Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -16,11 +16,61 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Tomcat指定JDK版本运行</title>
+    <link href="https://xuea.github.io/2016/09/01/Tomcat%E6%8C%87%E5%AE%9AJDK%E7%89%88%E6%9C%AC%E8%BF%90%E8%A1%8C/"/>
+    <id>https://xuea.github.io/2016/09/01/Tomcat指定JDK版本运行/</id>
+    <published>2016-09-01T03:08:48.000Z</published>
+    <updated>2016-09-01T12:57:08.757Z</updated>
+    
+    <content type="html"><![CDATA[<p>业务需求：一台服务器centos默认jdk版本是1.6，跑了两个服务tomcat服务：<br>业务一：占用8080端口，需要jdk6运行，是事先部署好的；<br>业务二：占用8180端口，需要jdk7运行，是将要部署的。<br>现在需要部署业务二，就会出现报错，怎么办？<br><a id="more"></a></p>
+<h2 id="报错"><a href="#报错" class="headerlink" title="报错"></a>报错</h2><p>业务二的项目部署好之后，启动项目，出现如下报错：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div></pre></td><td class="code"><pre><div class="line">java.lang.UnsupportedClassVersionError: org/springframework/web/filter/DelegatingFilterProxy : Unsupported major.minor version 51.0 (unable to load class org.springframework.web.filter.DelegatingFilterProxy)</div><div class="line">	at org.apache.catalina.loader.WebappClassLoader.findClassInternal(WebappClassLoader.java:2858)</div><div class="line">	at org.apache.catalina.loader.WebappClassLoader.findClass(WebappClassLoader.java:1159)</div><div class="line">	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1647)</div><div class="line">	at org.apache.catalina.loader.WebappClassLoader.loadClass(WebappClassLoader.java:1526)</div><div class="line">	at org.apache.catalina.startup.WebAnnotationSet.loadClassAnnotation(WebAnnotationSet.java:145)</div><div class="line">	at org.apache.catalina.startup.WebAnnotationSet.loadApplicationFilterAnnotations(WebAnnotationSet.java:84)</div><div class="line">	at org.apache.catalina.startup.WebAnnotationSet.loadApplicationAnnotations(WebAnnotationSet.java:57)</div><div class="line">	at org.apache.catalina.startup.ContextConfig.applicationAnnotationsConfig(ContextConfig.java:294)</div><div class="line">	at org.apache.catalina.startup.ContextConfig.start(ContextConfig.java:1047)</div><div class="line">	at org.apache.catalina.startup.ContextConfig.lifecycleEvent(ContextConfig.java:265)</div><div class="line">	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)</div><div class="line">	at org.apache.catalina.core.StandardContext.start(StandardContext.java:4616)</div><div class="line">	at org.apache.catalina.core.ContainerBase.addChildInternal(ContainerBase.java:799)</div><div class="line">	at org.apache.catalina.core.ContainerBase.addChild(ContainerBase.java:779)</div><div class="line">	at org.apache.catalina.core.StandardHost.addChild(StandardHost.java:583)</div><div class="line">	at org.apache.catalina.startup.HostConfig.deployDirectory(HostConfig.java:1079)</div><div class="line">	at org.apache.catalina.startup.HostConfig.deployDirectories(HostConfig.java:1002)</div><div class="line">	at org.apache.catalina.startup.HostConfig.deployApps(HostConfig.java:506)</div><div class="line">	at org.apache.catalina.startup.HostConfig.start(HostConfig.java:1317)</div><div class="line">	at org.apache.catalina.startup.HostConfig.lifecycleEvent(HostConfig.java:324)</div><div class="line">	at org.apache.catalina.util.LifecycleSupport.fireLifecycleEvent(LifecycleSupport.java:142)</div><div class="line">	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1065)</div><div class="line">	at org.apache.catalina.core.StandardHost.start(StandardHost.java:822)</div><div class="line">	at org.apache.catalina.core.ContainerBase.start(ContainerBase.java:1057)</div><div class="line">	at org.apache.catalina.core.StandardEngine.start(StandardEngine.java:463)</div><div class="line">	at org.apache.catalina.core.StandardService.start(StandardService.java:525)</div><div class="line">	at org.apache.catalina.core.StandardServer.start(StandardServer.java:754)</div><div class="line">	at org.apache.catalina.startup.Catalina.start(Catalina.java:595)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)</div><div class="line">	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)</div><div class="line">	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)</div><div class="line">	at java.lang.reflect.Method.invoke(Method.java:597)</div><div class="line">	at org.apache.catalina.startup.Bootstrap.start(Bootstrap.java:289)</div><div class="line">	at org.apache.catalina.startup.Bootstrap.main(Bootstrap.java:414)</div><div class="line">2016-8-29 9:55:13 org.apache.coyote.http11.Http11AprProtocol start</div></pre></td></tr></table></figure></p>
+<h2 id="问题原因"><a href="#问题原因" class="headerlink" title="问题原因"></a>问题原因</h2><p>jdk的版本问题，如上描述，业务二需要最低jdk版本为7</p>
+<h2 id="解决方法"><a href="#解决方法" class="headerlink" title="解决方法"></a>解决方法</h2><ol>
+<li>下载centos使用的 <a href="http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html" target="_blank" rel="external">jdk7</a>，我下载出来的文件名为：<br>jdk-7u45-linux-x64.tar.gz</li>
+<li><p>解压到某个目录下面并把源包删除</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ tar xvf jdk-7u45-linux-x64.tar.gz</div><div class="line">$ rm jdk-7u45-linux-x64.tar.gz</div></pre></td></tr></table></figure>
+<p>此时，进入到jdk7目录下的bin目录</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ java -version		<span class="comment">#返回的版本号是1.6，因为这是全局的jdk</span></div><div class="line">$ ./java -version	<span class="comment">#返回的版本号是1.7，因为这是当前目录下的jdk</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>配置8180端口的tomcat<br>在catalina.sh文件和setclasspath.sh文件的头部都加上指定jdk的地址(jdk路径根据自己的配置来变更)：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">export</span> JAVA_HOME=/usr/<span class="built_in">local</span>/app/jdk7</div><div class="line"><span class="built_in">export</span> JRE_HOME=/usr/<span class="built_in">local</span>/app/jdk7/jre</div></pre></td></tr></table></figure>
+</li>
+<li><p>如果出现端口冲突问题，请配置好自己tomcat下的server.xml文件，以下是一个示例：</p>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">&lt;Server port=<span class="string">"8005"</span> shutdown=<span class="string">"SHUTDOWN"</span>&gt;    ----&gt;    &lt;Server port=<span class="string">"8195"</span> shutdown=<span class="string">"SHUTDOWN"</span>&gt;</div><div class="line"></div><div class="line">&lt;Connector port=<span class="string">"8080"</span> protocol=<span class="string">"HTTP/1.1"</span> connectionTimeout=<span class="string">"20000"</span> redirectPort=<span class="string">"8443"</span> /&gt;    ----&gt;    &lt;Connector port=<span class="string">"8180"</span> protocol=<span class="string">"HTTP/1.1"</span>  maxThreads=<span class="string">"150"</span> minSpareThreads=<span class="string">"25"</span> maxSpareThreads=<span class="string">"75"</span> <span class="built_in">enable</span>Lookups=<span class="string">"false"</span> redirectPort=<span class="string">"8443"</span> acceptCount=<span class="string">"100"</span> debug=<span class="string">"0"</span> connectionTimeout=<span class="string">"20000"</span> <span class="built_in">disable</span>UploadTimeout=<span class="string">"true"</span> /&gt;</div><div class="line"></div><div class="line">&lt;Connector port=<span class="string">"8009"</span> protocol=<span class="string">"AJP/1.3"</span> redirectPort=<span class="string">"8443"</span> /&gt;    ----&gt;    &lt;Connector port=<span class="string">"8199"</span> protocol=<span class="string">"AJP/1.3"</span> redirectPort=<span class="string">"8443"</span> /&gt;</div><div class="line"></div><div class="line">&lt;Host name=<span class="string">"localhost"</span>  appBase=<span class="string">"webapps"</span> unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span> xmlValidation=<span class="string">"false"</span> xmlNamespaceAware=<span class="string">"false"</span>&gt;    ----&gt;    &lt;Host name=<span class="string">"10.10.3.54"</span>  appBase=<span class="string">"webapps"</span> unpackWARs=<span class="string">"true"</span> autoDeploy=<span class="string">"true"</span> xmlValidation=<span class="string">"false"</span> xmlNamespaceAware=<span class="string">"false"</span> &gt;&lt;Context path=<span class="string">""</span> docBase=<span class="string">"ROOT"</span> reloadable=<span class="string">"true"</span>&gt;&lt;/Context&gt;&lt;/Host&gt;</div></pre></td></tr></table></figure>
+</li>
+<li><p>启动tomcat，成功</p>
+</li>
+</ol>
+<h2 id="扩展：Eclipse中tomcat指定jdk来启动"><a href="#扩展：Eclipse中tomcat指定jdk来启动" class="headerlink" title="扩展：Eclipse中tomcat指定jdk来启动"></a>扩展：Eclipse中tomcat指定jdk来启动</h2><p>首先打开 window–》Preferences</p>
+<ol>
+<li>查看eclipse中现有的jdk版本，如下图，如果没有自己想要的版本，请在安装好之后，点击add添加进来：<br><img src="http://img.stepbystep.top/blog/20160901/add_jdk.png" alt="查看eclipse中现有的jdk版本"></li>
+<li>搜索tomcat，出现如下图，更改JDK的版本即可，记得保存<br><img src="http://img.stepbystep.top/blog/20160901/choose_jdk.png" alt="为tomcat选择固定的jdk版本"></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;业务需求：一台服务器centos默认jdk版本是1.6，跑了两个服务tomcat服务：&lt;br&gt;业务一：占用8080端口，需要jdk6运行，是事先部署好的；&lt;br&gt;业务二：占用8180端口，需要jdk7运行，是将要部署的。&lt;br&gt;现在需要部署业务二，就会出现报错，怎么办？&lt;br&gt;
+    
+    </summary>
+    
+      <category term="tomcat" scheme="https://xuea.github.io/categories/tomcat/"/>
+    
+    
+      <category term="tomcat" scheme="https://xuea.github.io/tags/tomcat/"/>
+    
+      <category term="jdk" scheme="https://xuea.github.io/tags/jdk/"/>
+    
+      <category term="异常处理" scheme="https://xuea.github.io/tags/%E5%BC%82%E5%B8%B8%E5%A4%84%E7%90%86/"/>
+    
+  </entry>
+  
+  <entry>
     <title>linux复习--命令总结</title>
     <link href="https://xuea.github.io/2016/08/20/linux%E5%A4%8D%E4%B9%A0-%E5%91%BD%E4%BB%A4%E6%80%BB%E7%BB%93/"/>
     <id>https://xuea.github.io/2016/08/20/linux复习-命令总结/</id>
     <published>2016-08-20T02:13:55.000Z</published>
-    <updated>2016-08-21T07:19:42.742Z</updated>
+    <updated>2016-09-01T12:02:12.116Z</updated>
     
     <content type="html"><![CDATA[<p>linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。<br><a id="more"></a></p>
 <h2 id="linux引子"><a href="#linux引子" class="headerlink" title="linux引子"></a>linux引子</h2><p>Linux确切的是指一个操作系统中的内核，它源于Unix，linux操作系统是指采用linux内核的GNU操作系统。<br>在1991年，由芬兰赫尔辛基大学的学生Linus B. Torvolds首创。</p>
@@ -76,7 +126,7 @@
 <blockquote>
 <p>\： 忽略正则表达式中特殊字符的原有含义。<br>^：匹配正则表达式的开始行。<br>$: 匹配正则表达式的结束行。<br>[ ]：单个字符，如[A]即A符合要求 。<br>[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>.：所有的单个字符<br>*：有字符，长度可以为0</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ grep <span class="string">'test'</span> log.log	<span class="comment">#显示log.log文件中包含test的行</span></div><div class="line">$ grep <span class="string">'test'</span> aa bb cc	<span class="comment">#显示aa、bb、cc文件中包含test的行</span></div><div class="line">$ grep <span class="string">'[a-z]\&#123;5\&#125;'</span> aa	<span class="comment">#显示aa文件中包含每个字符串有5个连续小写字符的字符串的行，&#123;&#125;要转义</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ grep <span class="string">'test'</span> log.log	<span class="comment">#显示log.log文件中包含test的行</span></div><div class="line">$ grep <span class="string">'test'</span> aa bb cc	<span class="comment">#显示aa、bb、cc文件中包含test的行</span></div><div class="line">$ grep <span class="string">'[a-z]\&#123;5\&#125;'</span> aa	<span class="comment">#显示aa文件中包含每个字符串有5个连续小写字符的字符串的行，&#123;&#125;要转义</span></div><div class="line">$ grep <span class="string">'123'</span> -r *		<span class="comment">#查询当前目录下(*)包含所有子文件(-r)，所有包含123的行</span></div></pre></td></tr></table></figure>
 <h3 id="find：查文件"><a href="#find：查文件" class="headerlink" title="find：查文件"></a>find：查文件</h3><p>最常用，实际搜寻硬盘查询文件名称，实时精确，但稍微较慢<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</span></div><div class="line">$ find / -name <span class="string">"mongo"</span>		<span class="comment">#全盘查找文件名为mongo的文件</span></div><div class="line">$ find . -name <span class="string">"mongo"</span>		<span class="comment">#全盘当前目录下文件名为mongo的文件</span></div><div class="line">$ find / -name <span class="string">"mongo*"</span>		<span class="comment">#全盘查找包含文件名为mongo的文件</span></div><div class="line">$ find / -iname <span class="string">"mongo*"</span>	<span class="comment">#全盘查找包含文件名为mongo的文件，不区分大小写</span></div></pre></td></tr></table></figure></p>
 <h3 id="whereis：查文件"><a href="#whereis：查文件" class="headerlink" title="whereis：查文件"></a>whereis：查文件</h3><p>whereis命令只能用于搜索程序名，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis ls</div></pre></td></tr></table></figure></p>
 <h3 id="which：查文件"><a href="#which：查文件" class="headerlink" title="which：查文件"></a>which：查文件</h3><p>查看可执行文件的位置<br>which是通过 PATH环境变量 到该路径内查找可执行文件，所以基本的功能是寻找可执行文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span>		<span class="comment">#输出当前环境变量</span></div><div class="line">$ <span class="built_in">which</span> ls		<span class="comment">#输出ls命令的位置</span></div></pre></td></tr></table></figure></p>
@@ -92,26 +142,26 @@
 <table>
 <thead>
 <tr>
-<th>dog</th>
-<th>bird</th>
-<th>cat</th>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>foo</td>
-<td>foo</td>
-<td>foo</td>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
 </tr>
 <tr>
-<td>bar</td>
-<td>bar</td>
-<td>bar</td>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
 </tr>
 <tr>
-<td>baz</td>
-<td>baz</td>
-<td>baz</td>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
 </tr>
 </tbody>
 </table>

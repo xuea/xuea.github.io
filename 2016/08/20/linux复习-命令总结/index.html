@@ -93,7 +93,7 @@
 <meta property="og:site_name" content="XueA">
 <meta property="og:description" content="linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。">
 <meta property="og:image" content="http://img.stepbystep.top/blog/20160820/top.png">
-<meta property="og:updated_time" content="2016-08-21T07:19:42.742Z">
+<meta property="og:updated_time" content="2016-09-01T12:02:12.116Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux复习--命令总结">
 <meta name="twitter:description" content="linux操作系统在开发部署过程中太常用了，一个优秀的开发者肯定会熟练使用它的。">
@@ -385,7 +385,7 @@
 <blockquote>
 <p>\： 忽略正则表达式中特殊字符的原有含义。<br>^：匹配正则表达式的开始行。<br>$: 匹配正则表达式的结束行。<br>[ ]：单个字符，如[A]即A符合要求 。<br>[ - ]：范围，如[A-Z]，即A、B、C一直到Z都符合要求 。<br>.：所有的单个字符<br>*：有字符，长度可以为0</p>
 </blockquote>
-<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ grep <span class="string">'test'</span> log.log	<span class="comment">#显示log.log文件中包含test的行</span></div><div class="line">$ grep <span class="string">'test'</span> aa bb cc	<span class="comment">#显示aa、bb、cc文件中包含test的行</span></div><div class="line">$ grep <span class="string">'[a-z]\&#123;5\&#125;'</span> aa	<span class="comment">#显示aa文件中包含每个字符串有5个连续小写字符的字符串的行，&#123;&#125;要转义</span></div></pre></td></tr></table></figure>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ grep <span class="string">'test'</span> log.log	<span class="comment">#显示log.log文件中包含test的行</span></div><div class="line">$ grep <span class="string">'test'</span> aa bb cc	<span class="comment">#显示aa、bb、cc文件中包含test的行</span></div><div class="line">$ grep <span class="string">'[a-z]\&#123;5\&#125;'</span> aa	<span class="comment">#显示aa文件中包含每个字符串有5个连续小写字符的字符串的行，&#123;&#125;要转义</span></div><div class="line">$ grep <span class="string">'123'</span> -r *		<span class="comment">#查询当前目录下(*)包含所有子文件(-r)，所有包含123的行</span></div></pre></td></tr></table></figure>
 <h3 id="find：查文件"><a href="#find：查文件" class="headerlink" title="find：查文件"></a>find：查文件</h3><p>最常用，实际搜寻硬盘查询文件名称，实时精确，但稍微较慢<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># find &lt;指定目录&gt; &lt;指定条件&gt; &lt;指定动作&gt;</span></div><div class="line">$ find / -name <span class="string">"mongo"</span>		<span class="comment">#全盘查找文件名为mongo的文件</span></div><div class="line">$ find . -name <span class="string">"mongo"</span>		<span class="comment">#全盘当前目录下文件名为mongo的文件</span></div><div class="line">$ find / -name <span class="string">"mongo*"</span>		<span class="comment">#全盘查找包含文件名为mongo的文件</span></div><div class="line">$ find / -iname <span class="string">"mongo*"</span>	<span class="comment">#全盘查找包含文件名为mongo的文件，不区分大小写</span></div></pre></td></tr></table></figure></p>
 <h3 id="whereis：查文件"><a href="#whereis：查文件" class="headerlink" title="whereis：查文件"></a>whereis：查文件</h3><p>whereis命令只能用于搜索程序名，而且只搜索二进制文件（参数-b）、man说明文件（参数-m）和源代码文件（参数-s）。如果省略参数，则返回所有信息<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ whereis ls</div></pre></td></tr></table></figure></p>
 <h3 id="which：查文件"><a href="#which：查文件" class="headerlink" title="which：查文件"></a>which：查文件</h3><p>查看可执行文件的位置<br>which是通过 PATH环境变量 到该路径内查找可执行文件，所以基本的功能是寻找可执行文件<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">echo</span> <span class="variable">$PATH</span>		<span class="comment">#输出当前环境变量</span></div><div class="line">$ <span class="built_in">which</span> ls		<span class="comment">#输出ls命令的位置</span></div></pre></td></tr></table></figure></p>
@@ -401,26 +401,26 @@
 <table>
 <thead>
 <tr>
-<th>dog</th>
-<th>bird</th>
-<th>cat</th>
+<th>Tables</th>
+<th style="text-align:center">Are</th>
+<th style="text-align:right">Cool</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>foo</td>
-<td>foo</td>
-<td>foo</td>
+<td>col 3 is</td>
+<td style="text-align:center">right-aligned</td>
+<td style="text-align:right">$1600</td>
 </tr>
 <tr>
-<td>bar</td>
-<td>bar</td>
-<td>bar</td>
+<td>col 2 is</td>
+<td style="text-align:center">centered</td>
+<td style="text-align:right">$12</td>
 </tr>
 <tr>
-<td>baz</td>
-<td>baz</td>
-<td>baz</td>
+<td>zebra stripes</td>
+<td style="text-align:center">are neat</td>
+<td style="text-align:right">$1</td>
 </tr>
 </tbody>
 </table>
@@ -468,6 +468,10 @@
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/09/01/Tomcat指定JDK版本运行/" rel="prev" title="Tomcat指定JDK版本运行">
+                Tomcat指定JDK版本运行 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -539,7 +543,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">4</span>
+              <span class="site-state-item-count">5</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -547,7 +551,7 @@
           
             <div class="site-state-item site-state-categories">
               <a href="/categories">
-                <span class="site-state-item-count">3</span>
+                <span class="site-state-item-count">4</span>
                 <span class="site-state-item-name">分类</span>
               </a>
             </div>
@@ -556,7 +560,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">8</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
