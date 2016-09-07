@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="XueA, NexT, blog" />
+  <meta name="keywords" content="Java,并发,CAS," />
 
 
 
@@ -86,15 +86,16 @@
 
 
 
-<meta name="description" content="千里之行 始于足下">
-<meta property="og:type" content="website">
-<meta property="og:title" content="XueA">
-<meta property="og:url" content="https://xuea.github.io/categories/linux/index.html">
+<meta name="description" content="你对本页的描述">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java并发：CAS算法探秘">
+<meta property="og:url" content="https://xuea.github.io/2016/09/05/Java并发：CAS算法探秘/index.html">
 <meta property="og:site_name" content="XueA">
-<meta property="og:description" content="千里之行 始于足下">
+<meta property="og:description" content="你对本页的描述">
+<meta property="og:updated_time" content="2016-09-07T07:00:15.289Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XueA">
-<meta name="twitter:description" content="千里之行 始于足下">
+<meta name="twitter:title" content="Java并发：CAS算法探秘">
+<meta name="twitter:description" content="你对本页的描述">
 
 
 
@@ -112,7 +113,7 @@
   };
 </script>
 
-  <title> 分类: linux | XueA </title>
+  <title> Java并发：CAS算法探秘 | XueA </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -143,7 +144,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left  ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -241,47 +242,163 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h2 >
-        linux
-        <small>分类</small>
-      </h2>
-    </div>
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
 
     
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Java并发：CAS算法探秘
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-05T23:02:30+08:00" content="2016-09-05">
+              2016-09-05
+            </time>
+          </span>
+
+          
+            <span class="post-category" >
+              &nbsp; | &nbsp;
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+              
+                <span itemprop="about" itemscope itemtype="https://schema.org/Thing">
+                  <a href="/categories/Java/" itemprop="url" rel="index">
+                    <span itemprop="name">Java</span>
+                  </a>
+                </span>
+
+                
+                
+
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/05/Java并发：CAS算法探秘/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/05/Java并发：CAS算法探秘/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
       
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+      
+        <p>CAS（Compare and swap）是并发算法时用到的一种技术。简单来说，比较和替换是使用一个期望值和一个变量的当前值进行比较，如果当前变量的值与我们期望的值相等，就使用一个新值替换当前变量的值。是对jdk1.5以前仅有悲观锁synchronouse的一种实现补充，CAS属于乐观锁范畴的算法，jdk中越来越多的并发算法都基于CAS算法实现。<br><a id="more"></a></p>
+<h2 id="乐观锁和悲观锁"><a href="#乐观锁和悲观锁" class="headerlink" title="乐观锁和悲观锁"></a>乐观锁和悲观锁</h2><p>悲观者与乐观者的做事方式完全不一样，悲观者的人生观是一件事情我必须要百分之百完全控制才会去做，否则就认为这件事情一定会出问题；而乐观者的人生观则相反，凡事不管最终结果如何，他都会先尝试去做，大不了最后不成功。这就是悲观锁与乐观锁的区别，悲观锁会把整个对象加锁占为自有后才去做操作，乐观锁不获取锁直接做操作，然后通过一定检测手段决定是否更新数据。</p>
+<p>JDK1.5之前都是靠synchronized关键字保证同步的，线程的挂起和恢复比较频繁，开销比较大。<br>独占锁是一种悲观锁，synchronized就是一种独占锁，它假设最坏的情况，并且只有在确保其它线程不会造成干扰的情况下执行，会导致其它所有需要锁的线程挂起，等待持有锁的线程释放锁。而另一个更加有效的锁就是乐观锁。所谓乐观锁就是，每次不加锁而是假设没有冲突而去完成某项操作，如果因为冲突失败就重试，直到成功为止。</p>
+<h2 id="算法核心"><a href="#算法核心" class="headerlink" title="算法核心"></a>算法核心</h2><blockquote>
+<p>CAS（Compareand Swap，比较并交换）算法涉及到三个操作数：内存值、预期值、新值。当且仅当预期值和内存值相等时才将内存值修改为新值。这样处理的逻辑是，首先检查某块内存的值是否跟之前我读取时的一样，如不一样则表示期间此内存值已经被别的线程更改过，舍弃本次操作，否则说明期间没有其他线程对此内存值操作，可以把新值设置给此块内存。如图2-5-4-1，有两个线程可能会差不多同时对某内存操作，线程二先读取某内存值作为预期值，执行到某处时线程二决定将新值设置到内存块中，如果线程一在此期间修改了内存块，则通过CAS即可以检测出来，假如检测没问题则线程二将新值赋予内存块。</p>
+</blockquote>
+<h2 id="不足之处"><a href="#不足之处" class="headerlink" title="不足之处"></a>不足之处</h2><p>乐观锁避免了悲观锁独占对象的现象，同时也提高了并发性能，但它也有缺点：</p>
+<ul>
+<li>乐观锁只能保证一个共享变量的原子操作。如果要求多个变量进行原子操作，将会力不从心，而独占锁没这个问题。</li>
+<li>CAS尝试失败后会再次尝试，直到成功为止，如果尝试次数过多，对CPU的开销反而会更大。</li>
+<li>ABA问题。CAS的核心思想是通过比对内存值与预期值是否一样而判断内存值是否被改过，但这个判断逻辑不严谨，假如内存值原来是A，后来被一条线程改为B，最后又被改成了A，则CAS认为此内存值并没有发生改变，但实际上是有被其他线程改过的，这种情况对依赖过程值的情景的运算结果影响很大。解决的思路是引入版本号，每次变量更新都把版本号加一。</li>
+</ul>
+<p>CAS乐观锁是对悲观锁的改进，虽然它也有缺点，但它确实已经成为提高并发性能的主要手段，而且jdk中的并发包也大量使用基于CAS的乐观锁。</p>
 
-      <h1 class="post-title">
+      
+    </div>
+
+    <div>
+      
         
-            <a class="post-title-link" href="/2016/08/20/linux复习-命令总结/" itemprop="url">
-              
-                <span itemprop="name">linux复习--命令总结</span>
-              
-            </a>
+      
+    </div>
+
+    <div>
+      
         
-      </h1>
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2016-08-20T10:13:55+08:00"
-              content="2016-08-20" >
-          08-20
-        </time>
-      </div>
+      
+    </div>
 
-    </header>
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Java/" rel="tag">#Java</a>
+          
+            <a href="/tags/并发/" rel="tag">#并发</a>
+          
+            <a href="/tags/CAS/" rel="tag">#CAS</a>
+          
+        </div>
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/09/01/Tomcat指定JDK版本运行/" rel="next" title="Tomcat指定JDK版本运行">
+                <i class="fa fa-chevron-left"></i> Tomcat指定JDK版本运行
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </article>
 
 
-    
-  </section>
 
-  
-
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -289,6 +406,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/05/Java并发：CAS算法探秘/"
+           data-title="Java并发：CAS算法探秘" data-url="https://xuea.github.io/2016/09/05/Java并发：CAS算法探秘/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -308,8 +433,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.jpg"
@@ -391,6 +525,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#乐观锁和悲观锁"><span class="nav-number">1.</span> <span class="nav-text">乐观锁和悲观锁</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#算法核心"><span class="nav-number">2.</span> <span class="nav-text">算法核心</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#不足之处"><span class="nav-number">3.</span> <span class="nav-text">不足之处</span></a></li></ol></div>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -494,6 +639,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
