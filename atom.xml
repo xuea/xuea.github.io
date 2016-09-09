@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://xuea.github.io/"/>
-  <updated>2016-09-07T07:04:12.545Z</updated>
+  <updated>2016-09-09T08:48:11.685Z</updated>
   <id>https://xuea.github.io/</id>
   
   <author>
@@ -14,6 +14,66 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>linux下编译自己的JDK7</title>
+    <link href="https://xuea.github.io/2016/09/09/linux%E4%B8%8B%E7%BC%96%E8%AF%91%E8%87%AA%E5%B7%B1%E7%9A%84JDK7/"/>
+    <id>https://xuea.github.io/2016/09/09/linux下编译自己的JDK7/</id>
+    <published>2016-09-09T04:58:47.000Z</published>
+    <updated>2016-09-09T08:48:11.685Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在学习《深入理解Java虚拟机 JVM高级特性与最佳实践》，第一章介绍如何编译jdk的内容，刚开始觉得没意思，跳过了，但回过头想想“重在过程”嘛，现在有开始了。整个在ubuntu14.04系统上操作，window下编译有点难搞。<br><a id="more"></a></p>
+<h3 id="下载OpenJDK源码"><a href="#下载OpenJDK源码" class="headerlink" title="下载OpenJDK源码"></a>下载OpenJDK源码</h3><p><a href="http://jdk7.java.net/" target="_blank" rel="external">下载地址</a>，请下载Source Code（源代码）<br>解压到自己的要存放的目录中</p>
+<h3 id="构建编译环境"><a href="#构建编译环境" class="headerlink" title="构建编译环境"></a>构建编译环境</h3><blockquote>
+<p>所有文件的保存路径等最好不要有中文，以免造成不必要的麻烦。</p>
+</blockquote>
+<p>编译环境需要 Bootstarp JDK 和 GCC。Bootstrap JDK 就是需要一个可用的JDK版本，在下面命令中我下载了openjdk-6的版本，如果已经有了JDK，就可以不下载了。<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#下载GCC相关的编译环境</span></div><div class="line">$ sudo apt-get install build-essential gawk m4 libasound2-dev libcups2-dev libxrender-dev xorg-dev xutils-dev x11proto-print-dev binutils libmotif3 libmotif-dev ant libxt-dev libxtst-dev</div><div class="line"><span class="comment">#下载openjdk6</span></div><div class="line">$ sudo apt-get openjdk-6-jdk</div></pre></td></tr></table></figure></p>
+<h3 id="进行编译"><a href="#进行编译" class="headerlink" title="进行编译"></a>进行编译</h3><p>terminal中进行环境变量设置：</p>
+<blockquote>
+<p>#语言选项，这个必须设置，否则编译好后会出现一个HashTable的NPE错<br>export LANG=C</p>
+<p>#Bootstrap JDK的安装路径。必须设置。请改成自己的Bootstrap JDK路径<br>export ALT_BOOTDIR=/usr/lib/jvm/java-6-openjdk-i386/</p>
+<p>#允许自动下载依赖<br>export ALLOW_DOWNLOADS=true</p>
+<p>#并行编译的线程数，设置为和CPU内核数量一致即可。请设置成自己的CPU内核数<br>export HOTSPOT_BUILD_JOBS=2<br>export ALT_PARALLEL_COMPILE_JOBS=2</p>
+<p>#比较本次build出来的映像与先前版本的差异。这个对我们来说没有意义，必须设置为false，否则sanity检查会报缺少先前版本JDK的映像。如果有设置dev或者DEV_ONLY=true的话这个不显式设置也行。<br>export SKIP_COMPARE_IMAGES=true</p>
+<p>#使用预编译头文件，不加这个编译会更慢一些<br>export USE_PRECOMPILED_HEADER=true</p>
+<p>#要编译的内容<br>export BUILD_LANGTOOLS=true<br>#export BUILD_JAXP=false<br>#export BUILD_JAXWS=false<br>#export BUILD_CORBA=false<br>export BUILD_HOTSPOT=true<br>export BUILD_JDK=true</p>
+<p>#要编译的版本<br>#export SKIP_DEBUG_BUILD=false<br>#export SKIP_FASTDEBUG_BUILD=true<br>#export DEBUG_NAME=debug</p>
+<p>#把它设置为false可以避开javaws和浏览器Java插件之类的部分的build。<br>BUILD_DEPLOY=false</p>
+<p>#把它设置为false就不会build出安装包。因为安装包里有些奇怪的依赖，但即便不build出它也已经能得到完整的JDK映像，所以还是别build它好了。<br>BUILD_INSTALL=false</p>
+<p>#编译结果所存放的路径。请设置好自己的编译结果存放路径<br>export ALT_OUTPUTDIR=/home/leo/java/myjdk</p>
+<p>#这两个环境变量必须去掉，不然会有很诡异的事情发生（我没有具体查过这些“”诡异的事情”，Makefile脚本检查到有这2个变量就会提示警告“）<br>unset JAVA_HOME<br>unset CLASSPATH</p>
+</blockquote>
+<figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ make sanity		<span class="comment">#编译检查，最后输出“Sanity check passed”即检查通过</span></div><div class="line"><span class="comment">#此处提醒！！可以先看看避坑总结，然后再编译，可以避免一些错误</span></div><div class="line">$ make DEBUG_BINARIES=<span class="literal">true</span> 2&gt;&amp;1 | tee build.log</div></pre></td></tr></table></figure>
+<h3 id="避坑总结"><a href="#避坑总结" class="headerlink" title="避坑总结"></a>避坑总结</h3><p>问题一：cc1plus: error: the “stabs” debug format cannot be used with pre-compiled headers [-Werror=deprecated]<br>问题解决：因为高版本的gcc不再支持stabs，解决办法：在make命令中加上 DEBUG_BINARIES=true</p>
+<p>问题二：遇到错误Error:./gamma: relocation error: /usr/lib/jvm/java-7-openjdk-amd64/jre/lib/amd64/libjava.so: symbol JVM_FindClassFromCaller, version SUNWprivate_1.1 not defined in file libjvm.so with link time reference<br>问题解决：修改文件hotspot/make/linux/Makefile，删掉文件中所有的  &amp;&amp; ./test_gamma  ，我的文件一共出现6次</p>
+<p>问题三：Error: time is more than 10 years from present: 1136059200000<br>问题解决：将jdk源码下的jdk/src/share/classes/java/util/CurrencyData.properties里面出现的时间全部改为10年内的时间。<br>例如：TR=TRL;2004-12-31-22-00-00;TRY  改为   TR=TRL;2014-12-31-22-00-00;TRY</p>
+<h3 id="编译成功"><a href="#编译成功" class="headerlink" title="编译成功"></a>编译成功</h3><p>出现如下字样，表示就编译成功了。</p>
+<blockquote>
+<p>#– Build times ———-<br>Target all_product_build<br>Start 2016-09-09 09:46:45<br>End   2016-09-09 09:56:22<br>00:00:03 corba<br>00:00:10 hotspot<br>00:00:02 jaxp<br>00:00:03 jaxws<br>00:09:17 jdk<br>00:00:02 langtools<br>00:09:37 TOTAL<br>-————————</p>
+</blockquote>
+<p>此时，进入编译结果存放目录，进入 j2sdk-image 目录，这就是一个完整的JDK编译结果了。<br>输入命令：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ ./java -version</div><div class="line">openjdk version <span class="string">"1.7.0-internal"</span></div><div class="line">OpenJDK Runtime Environment (build 1.7.0-internal-leo_2016_09_09_09_32-b00)</div><div class="line">OpenJDK Server VM (build 24.0-b56, mixed mode)</div></pre></td></tr></table></figure></p>
+<p>很爽吧，里面还带有自己的机器名(leo)，还有编译时间。此时，拿着这个jdk就可以全局使用了：<br><figure class="highlight sh"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">$ sudo gedit ~/.bashrc</div><div class="line"><span class="comment"># 尾部加上</span></div><div class="line"><span class="built_in">export</span> JAVA_HOME=/home/leo/java/myjdk/j2sdk-image </div><div class="line"><span class="built_in">export</span> JRE_HOME=<span class="variable">$&#123;JAVA_HOME&#125;</span>/jre  </div><div class="line"><span class="built_in">export</span> CLASSPATH=.:<span class="variable">$&#123;JAVA_HOME&#125;</span>/lib:<span class="variable">$&#123;JRE_HOME&#125;</span>/lib  </div><div class="line"><span class="built_in">export</span> PATH=<span class="variable">$&#123;JAVA_HOME&#125;</span>/bin:<span class="variable">$PATH</span></div><div class="line"></div><div class="line">$ <span class="built_in">source</span> ~/.bashrc</div><div class="line">$ java -version			<span class="comment">#可以到处使用了</span></div></pre></td></tr></table></figure></p>
+<p>最后，提醒一下，OpenJDK可能有很多内容并不时候生产环境使用，生产环境最好还是使用Oracle JDK或者Sun JDK。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在学习《深入理解Java虚拟机 JVM高级特性与最佳实践》，第一章介绍如何编译jdk的内容，刚开始觉得没意思，跳过了，但回过头想想“重在过程”嘛，现在有开始了。整个在ubuntu14.04系统上操作，window下编译有点难搞。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Java" scheme="https://xuea.github.io/categories/Java/"/>
+    
+    
+      <category term="Java" scheme="https://xuea.github.io/tags/Java/"/>
+    
+      <category term="jdk" scheme="https://xuea.github.io/tags/jdk/"/>
+    
+      <category term="ubuntu" scheme="https://xuea.github.io/tags/ubuntu/"/>
+    
+      <category term="OpenJDK" scheme="https://xuea.github.io/tags/OpenJDK/"/>
+    
+  </entry>
   
   <entry>
     <title>Java并发：CAS算法探秘</title>
